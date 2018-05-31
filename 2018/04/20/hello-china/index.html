@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="�ֲ�ʽ�ļ�ϵͳHDFS��HDFS��GFS�Ŀ�¡��    �ص㣺�ั�����ݴ��ԡ� ��Դ����ϵͳYARN������������Ⱥ��Դ�Ĺ���͵��� �ֲ�ʽ������MapReduce �鿴���������Ƿ�����ʹ�� ping �������������Ƿ�ͨ�� ���û������IP���������������༭��NAT�����Ƿ����IP�">
+<meta name="description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello China">
+<meta property="og:title" content="hadoop下的mapreduce和hdfs的安装">
 <meta property="og:url" content="http://yoursite.com/2018/04/20/hello-china/index.html">
 <meta property="og:site_name" content="写的更多，做的很少">
-<meta property="og:description" content="�ֲ�ʽ�ļ�ϵͳHDFS��HDFS��GFS�Ŀ�¡��    �ص㣺�ั�����ݴ��ԡ� ��Դ����ϵͳYARN������������Ⱥ��Դ�Ĺ���͵��� �ֲ�ʽ������MapReduce �鿴���������Ƿ�����ʹ�� ping �������������Ƿ�ͨ�� ���û������IP���������������༭��NAT�����Ƿ����IP�">
+<meta property="og:description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-31T02:16:29.086Z">
+<meta property="og:updated_time" content="2018-05-31T02:23:39.204Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello China">
-<meta name="twitter:description" content="�ֲ�ʽ�ļ�ϵͳHDFS��HDFS��GFS�Ŀ�¡��    �ص㣺�ั�����ݴ��ԡ� ��Դ����ϵͳYARN������������Ⱥ��Դ�Ĺ���͵��� �ֲ�ʽ������MapReduce �鿴���������Ƿ�����ʹ�� ping �������������Ƿ�ͨ�� ���û������IP���������������༭��NAT�����Ƿ����IP�">
+<meta name="twitter:title" content="hadoop下的mapreduce和hdfs的安装">
+<meta name="twitter:description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>Hello China | 写的更多，做的很少</title>
+  <title>hadoop下的mapreduce和hdfs的安装 | 写的更多，做的很少</title>
   
 
 
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello China</h1>
+          <h1 class="post-title" itemprop="name headline">hadoop下的mapreduce和hdfs的安装</h1>
         
 
         <div class="post-meta">
@@ -321,69 +321,68 @@
       
 
       
-        <p>�ֲ�ʽ�ļ�ϵͳHDFS��HDFS��GFS�Ŀ�¡��<br>    �ص㣺�ั�����ݴ��ԡ�</p>
-<p>��Դ����ϵͳYARN������������Ⱥ��Դ�Ĺ���͵���</p>
-<p>�ֲ�ʽ������MapReduce</p>
-<h2 id="�鿴���������Ƿ�����"><a href="#�鿴���������Ƿ�����" class="headerlink" title="�鿴���������Ƿ�����"></a>�鿴���������Ƿ�����</h2><p>ʹ�� ping �������������Ƿ�ͨ��</p>
-<p>���û������IP���������������༭��NAT�����Ƿ����IP��</p>
-<p>��������������þ�̬IP��</p>
+        <p>分布式文件系统HDFS：HDFS是GFS的克隆版<br>    特点：多副本，容错性。</p>
+<p>资源调度系统YARN：负责整个集群资源的管理和调度</p>
+<p>分布式计算框架MapReduce</p>
+<h2 id="查看网络连接是否正常"><a href="#查看网络连接是否正常" class="headerlink" title="查看网络连接是否正常"></a>查看网络连接是否正常</h2><p>使用 ping 测试网络连接是否通常</p>
+<p>如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。</p>
+<p>否则请给机器设置静态IP：</p>
 <p>etc/network/interfaces</p>
-<h2 id="��װSSH������ͨ�����"><a href="#��װSSH������ͨ�����" class="headerlink" title="��װSSH������ͨ�����"></a>��װSSH������ͨ�����</h2><h4 id="��½root�u�"><a href="#��½root�u�" class="headerlink" title="��½root�û�"></a>��½root�û�</h4><p>����root�û����� sudo passwd root<br>��root�û� su root</p>
-<h4 id="��װssh���"><a href="#��װssh���" class="headerlink" title="��װssh���"></a>��װssh���</h4><p>��װ���� apt-get install openssh-server</p>
-<p>����� service ssh start</p>
-<p>�鿴���� ps -e |grep ssh</p>
-<h4 id="����sshʹ������Զ������"><a href="#����sshʹ������Զ������" class="headerlink" title="����sshʹ������Զ������"></a>����sshʹ������Զ������</h4><p>���ļ���<code>/etc/ssh/sshd_config</code><br>�޸Ĵ��룺<code>PermitRootLogin yes</code><br>����ssh����<code>service ssh restart</code></p>
-<p>ʹ��putty.exe������windows�ϴ�session�Ự�����ַԶ�̴�LINUX�ն�</p>
-<h2 id="��װJDK"><a href="#��װJDK" class="headerlink" title="��װJDK"></a>��װJDK</h2><p>��Ϊhadoop��java��д��������Ҫjava����������֧�֣���������</p>
+<h2 id="安装SSH服务器通信软件"><a href="#安装SSH服务器通信软件" class="headerlink" title="安装SSH服务器通信软件"></a>安装SSH服务器通信软件</h2><h4 id="登陆root用户"><a href="#登陆root用户" class="headerlink" title="登陆root用户"></a>登陆root用户</h4><p>设置root用户密码 sudo passwd root<br>启动root用户 su root</p>
+<h4 id="安装ssh软件"><a href="#安装ssh软件" class="headerlink" title="安装ssh软件"></a>安装ssh软件</h4><p>安装命令 apt-get install openssh-server</p>
+<p>启动服务 service ssh start</p>
+<p>查看进程 ps -e |grep ssh</p>
+<h4 id="配置ssh使其允许远程连接"><a href="#配置ssh使其允许远程连接" class="headerlink" title="配置ssh使其允许远程连接"></a>配置ssh使其允许远程连接</h4><p>打开文件：<code>/etc/ssh/sshd_config</code><br>修改代码：<code>PermitRootLogin yes</code><br>重启ssh服务：<code>service ssh restart</code></p>
+<p>使用putty.exe程序在windows上打开session会话输入地址远程打开LINUX终端</p>
+<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p>因为hadoop是java编写的所以需要java开发环境的支持，才能运行</p>
 <ol>
-<li>����Ŀ¼��<code>/usr/local/jdk</code></li>
-<li>�����ļ���(ѡ��)<code>wget ���ص�ַ</code></li>
-<li>��ѹ�ļ���Ŀ¼��<code>tar -xvzf ... -C ...</code></li>
+<li>创建目录：<code>/usr/local/jdk</code></li>
+<li>下载文件：(选用)<code>wget 下载地址</code></li>
+<li>解压文件到目录：<code>tar -xvzf ... -C ...</code></li>
 </ol>
-<h4 id="��ӻ�������"><a href="#��ӻ�������" class="headerlink" title="��ӻ�������"></a>��ӻ�������</h4><p>��<code>/etc/profile</code>����Ӵ���<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk/jdk1.8.0_171</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure></p>
-<p>��Ч����������<code>source /etc/profile</code></p>
-<p>���԰�װ�ɹ���<code>java -version</code></p>
-<p>wincp.exe�����ϴ��ļ���Linux�����</p>
-<h2 id="��װhadoop"><a href="#��װhadoop" class="headerlink" title="��װhadoop"></a>��װhadoop</h2><p>�߿��� ��HA��+ ���ؾ��� = �����������+����ƽ������</p>
-<p>�ٷ����أ�hadoop.apache.org</p>
-<p>�ٷ��ĵ���hadoop.apache.org/docs/r1.0.4/cn/mapred_tutorial.html</p>
-<p>��װ��ʽ��</p>
+<h4 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h4><p>在<code>/etc/profile</code>中添加代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk/jdk1.8.0_171</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure></p>
+<p>生效环境变量：<code>source /etc/profile</code></p>
+<p>测试安装成功：<code>java -version</code></p>
+<p>wincp.exe用于上传文件到Linux虚拟机</p>
+<h2 id="安装hadoop"><a href="#安装hadoop" class="headerlink" title="安装hadoop"></a>安装hadoop</h2><p>高可用 （HA）+ 负载均衡 = 多服务器镜像+请求平均分配</p>
+<p>官方下载：hadoop.apache.org</p>
+<p>官方文档：hadoop.apache.org/docs/r1.0.4/cn/mapred_tutorial.html</p>
+<p>安装方式：</p>
 <ol>
-<li>����ģʽ�����ڲ��ԣ�ֱ�ӽ�ѹ��������</li>
-<li>α�ֲ�ģʽ�����ڿ��������������������</li>
-<li>�ֲ�ģʽ����������</li>
+<li>本地模式：用于测试，直接解压就能运行</li>
+<li>伪分布模式：用于开发，必须进行网络连接</li>
+<li>分布模式：用于生产</li>
 </ol>
-<h4 id="����gʽ��"><a href="#����gʽ��" class="headerlink" title="����ģʽ��"></a><strong>����ģʽ��</strong></h4><ol>
-<li>����Ŀ¼ <code>mkdir /hadoop</code></li>
-<li>��ѹ�ļ� <code>tar xxxx -C xxx</code></li>
-<li>ʹ��<code>share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.3.jar</code>����ָ���ļ�����ͳ�Ʋ���</li>
-<li>��� <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.3.jar wordcount output</span><br><span class="line">/*</span><br><span class="line">1. hadoop�µ�binĿ¼�µ�hadoop jar ���������ִ��jar��</span><br><span class="line">2. wordcount ָ��java�ļ�</span><br><span class="line">3. output ���</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h4 id="本地模式："><a href="#本地模式：" class="headerlink" title="本地模式："></a><strong>本地模式：</strong></h4><ol>
+<li>创建目录 <code>mkdir /hadoop</code></li>
+<li>解压文件 <code>tar xxxx -C xxx</code></li>
+<li>使用<code>share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.3.jar</code>进行指定文件单词统计测试</li>
+<li>命令： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.3.jar wordcount output</span><br><span class="line">/*</span><br><span class="line">1. hadoop下的bin目录下的hadoop jar 命令，作用是执行jar包</span><br><span class="line">2. wordcount 指定java文件</span><br><span class="line">3. output 输出</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="α�ֲ�gʽ"><a href="#α�ֲ�gʽ" class="headerlink" title="α�ֲ�ģʽ"></a><strong>α�ֲ�ģʽ</strong></h4><p>�ڱ���ģʽ��װ�Ļ���֮�ϣ����в���</p>
+<h4 id="伪分布模式"><a href="#伪分布模式" class="headerlink" title="伪分布模式"></a><strong>伪分布模式</strong></h4><p>在本地模式安装的基础之上，进行操作</p>
 <ol>
-<li><p>���û�����������(<code>/etc/profile</code>)</p>
+<li><p>配置环境环境变量(<code>/etc/profile</code>)</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HOME = XXX</span><br><span class="line">export PATH = ....:$HADOOP_HOME/bin:$HADOOP_HOME/bin</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>ʹ���õĻ���������Ч��<code>source /etc/profile</code></p>
+<li><p>使配置的环境变量生效：<code>source /etc/profile</code></p>
 </li>
-<li>�޸���������<code>/etc/hosts</code></li>
-<li><p>�޸�hostname��</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">��ʽһ��</span><br><span class="line">echo hadoopmaster&gt;/etc/hostname</span><br><span class="line">hostname -F /etc/hostname</span><br></pre></td></tr></table></figure>
+<li>修改主机名：<code>/etc/hosts</code></li>
+<li><p>修改hostname：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">方式一：</span><br><span class="line">echo hadoopmaster&gt;/etc/hostname</span><br><span class="line">hostname -F /etc/hostname</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>����hadoop-env.sh��JDKĿ¼(<code>.../etc/hadoop/hadoop-env.sh</code>)<br><code>JAVA_HOME = /usr/local/jdk/jdk1.8.0_171/</code></p>
+<li><p>配置hadoop-env.sh的JDK目录(<code>.../etc/hadoop/hadoop-env.sh</code>)<br><code>JAVA_HOME = /usr/local/jdk/jdk1.8.0_171/</code></p>
 </li>
 </ol>
-<p>��ѡ���裺<br>��windows��hosts����һ����������Ӧip��ַ������cmd����鿴һ���Ƿ���ping</p>
-<h4 id="�ֲ�gʽ"><a href="#�ֲ�gʽ" class="headerlink" title="�ֲ�ģʽ"></a>�ֲ�ģʽ</h4><p>��α�ֲ�ģʽ����֮�Ͻ����޸�</p>
+<p>可选步骤：<br>在windows的hosts配置一下主机名对应ip地址，运行cmd命令查看一下是否能ping</p>
+<h4 id="分布模式"><a href="#分布模式" class="headerlink" title="分布模式"></a>分布模式</h4><p>在伪分布模式基础之上进行修改</p>
 <ol>
-<li>���ڵ�����mater�Ļ�������hostname��Ҫ�������������hostӳ��</li>
-<li><p>��������������Կ���õ���mater����֮��</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//1. ʹ��scp����Ƶ�������master�ϣ�master����������</span><br><span class="line">`scp id_rsa.pub master@master:~/.ssh/id_rsa_1.pub`</span><br><span class="line">//2. ׷�ӵ�������˽Կ��</span><br><span class="line">cat id_rsa_1.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
+<li>对于当作主mater的机器，在hostname中要添加其他主机的host映射</li>
+<li><p>将其他机器的密钥配置到主mater机器之上</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//1. 使用scp命令复制到主机器master上，master是主机名称</span><br><span class="line">`scp id_rsa.pub master@master:~/.ssh/id_rsa_1.pub`</span><br><span class="line">//2. 追加到主机的私钥上</span><br><span class="line">cat id_rsa_1.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>���óɹ���������һ�θ�ʽ������</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`rm -r data`</span><br><span class="line">`rm -r sourcepackage`</span><br><span class="line">`hadoop namenode -format`</span><br></pre></td></tr></table></figure>
-</li>
+<li><p>配置成功后，最后进行一次格式化操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`rm -r data`</span><br><span class="line">`rm -r sourcepackage`</span><br><span class="line">`hadoop namenode -format`</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -553,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#�鿴���������Ƿ�����"><span class="nav-number">1.</span> <span class="nav-text">�鿴���������Ƿ�����</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#��װSSH������ͨ�����"><span class="nav-number">2.</span> <span class="nav-text">��װSSH������ͨ�����</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#��½root�u�"><span class="nav-number">2.0.1.</span> <span class="nav-text">��½root�û�</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#��װssh���"><span class="nav-number">2.0.2.</span> <span class="nav-text">��װssh���</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#����sshʹ������Զ������"><span class="nav-number">2.0.3.</span> <span class="nav-text">����sshʹ������Զ������</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#��װJDK"><span class="nav-number">3.</span> <span class="nav-text">��װJDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#��ӻ�������"><span class="nav-number">3.0.1.</span> <span class="nav-text">��ӻ�������</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#��װhadoop"><span class="nav-number">4.</span> <span class="nav-text">��װhadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#����gʽ��"><span class="nav-number">4.0.1.</span> <span class="nav-text">����ģʽ��</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#α�ֲ�gʽ"><span class="nav-number">4.0.2.</span> <span class="nav-text">α�ֲ�ģʽ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#�ֲ�gʽ"><span class="nav-number">4.0.3.</span> <span class="nav-text">�ֲ�ģʽ</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看网络连接是否正常"><span class="nav-number">1.</span> <span class="nav-text">查看网络连接是否正常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装SSH服务器通信软件"><span class="nav-number">2.</span> <span class="nav-text">安装SSH服务器通信软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#登陆root用户"><span class="nav-number">2.0.1.</span> <span class="nav-text">登陆root用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装ssh软件"><span class="nav-number">2.0.2.</span> <span class="nav-text">安装ssh软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置ssh使其允许远程连接"><span class="nav-number">2.0.3.</span> <span class="nav-text">配置ssh使其允许远程连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK"><span class="nav-number">3.</span> <span class="nav-text">安装JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加环境变量"><span class="nav-number">3.0.1.</span> <span class="nav-text">添加环境变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hadoop"><span class="nav-number">4.</span> <span class="nav-text">安装hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地模式："><span class="nav-number">4.0.1.</span> <span class="nav-text">本地模式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪分布模式"><span class="nav-number">4.0.2.</span> <span class="nav-text">伪分布模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布模式"><span class="nav-number">4.0.3.</span> <span class="nav-text">分布模式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -601,7 +600,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共322字</span>
+  <span class="post-count">博客全站共840字</span>
 </div>
         
 
