@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="写的更多，做的很少">
 <meta property="og:description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-31T02:28:45.805Z">
+<meta property="og:updated_time" content="2018-05-31T02:37:34.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hadoop下的yarn和hdfs安装">
 <meta name="twitter:description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
@@ -358,7 +358,7 @@
 <h4 id="配置ssh使其允许远程连接"><a href="#配置ssh使其允许远程连接" class="headerlink" title="配置ssh使其允许远程连接"></a>配置ssh使其允许远程连接</h4><p>打开文件：<code>/etc/ssh/sshd_config</code><br>修改代码：<code>PermitRootLogin yes</code><br>重启ssh服务：<code>service ssh restart</code></p>
 <p>使用putty.exe程序在windows上打开session会话输入地址远程打开LINUX终端</p>
 <h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p>因为hadoop是java编写的所以需要java开发环境的支持，才能运行</p>
-<ol>
+<h4 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h4><ol>
 <li>创建目录：<code>/usr/local/jdk</code></li>
 <li>下载文件：(选用)<code>wget 下载地址</code></li>
 <li>解压文件到目录：<code>tar -xvzf ... -C ...</code></li>
@@ -367,7 +367,7 @@
 <p>生效环境变量：<code>source /etc/profile</code></p>
 <p>测试安装成功：<code>java -version</code></p>
 <p>wincp.exe用于上传文件到Linux虚拟机</p>
-<h2 id="安装hadoop"><a href="#安装hadoop" class="headerlink" title="安装hadoop"></a>安装hadoop</h2><p>高可用 （HA）+ 负载均衡 = 多服务器镜像+请求平均分配</p>
+<h2 id="安装hadoop"><a href="#安装hadoop" class="headerlink" title="安装hadoop"></a>安装hadoop</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>高可用 （HA）+ 负载均衡 = 多服务器镜像+请求平均分配</p>
 <p>官方下载：hadoop.apache.org</p>
 <p>官方文档：hadoop.apache.org/docs/r1.0.4/cn/mapred_tutorial.html</p>
 <p>安装方式：</p>
@@ -588,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看网络连接是否正常"><span class="nav-number">1.</span> <span class="nav-text">查看网络连接是否正常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装SSH服务器通信软件"><span class="nav-number">2.</span> <span class="nav-text">安装SSH服务器通信软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#登陆root用户"><span class="nav-number">2.0.1.</span> <span class="nav-text">登陆root用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装ssh软件"><span class="nav-number">2.0.2.</span> <span class="nav-text">安装ssh软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置ssh使其允许远程连接"><span class="nav-number">2.0.3.</span> <span class="nav-text">配置ssh使其允许远程连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK"><span class="nav-number">3.</span> <span class="nav-text">安装JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加环境变量"><span class="nav-number">3.0.1.</span> <span class="nav-text">添加环境变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hadoop"><span class="nav-number">4.</span> <span class="nav-text">安装hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地模式："><span class="nav-number">4.0.1.</span> <span class="nav-text">本地模式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪分布模式"><span class="nav-number">4.0.2.</span> <span class="nav-text">伪分布模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布模式"><span class="nav-number">4.0.3.</span> <span class="nav-text">分布模式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看网络连接是否正常"><span class="nav-number">1.</span> <span class="nav-text">查看网络连接是否正常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装SSH服务器通信软件"><span class="nav-number">2.</span> <span class="nav-text">安装SSH服务器通信软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#登陆root用户"><span class="nav-number">2.0.1.</span> <span class="nav-text">登陆root用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装ssh软件"><span class="nav-number">2.0.2.</span> <span class="nav-text">安装ssh软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置ssh使其允许远程连接"><span class="nav-number">2.0.3.</span> <span class="nav-text">配置ssh使其允许远程连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK"><span class="nav-number">3.</span> <span class="nav-text">安装JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装准备"><span class="nav-number">3.0.1.</span> <span class="nav-text">安装准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加环境变量"><span class="nav-number">3.0.2.</span> <span class="nav-text">添加环境变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hadoop"><span class="nav-number">4.</span> <span class="nav-text">安装hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">4.0.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地模式："><span class="nav-number">4.0.2.</span> <span class="nav-text">本地模式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪分布模式"><span class="nav-number">4.0.3.</span> <span class="nav-text">伪分布模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布模式"><span class="nav-number">4.0.4.</span> <span class="nav-text">分布模式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
