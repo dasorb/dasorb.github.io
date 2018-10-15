@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,个人总结,面试," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基础篇解释一下面向对象的特征 面向对象的特征有封装、继承、多态 封装：是将对象关键特征和属性，封装到对象内部，与外界隔离。保证程序的健壮性 继承：子类继承父类具有的特征，有利于代码的复用性 多态：不同类对象对相同行为的不同反应  static语句块与非static语句块、构造器之间是怎样加载的 有父类的情况： 先加载父类的static语句块-&amp;gt;加载子类的static语句块-&amp;gt; 父类非s">
+<meta name="keywords" content="java,个人总结,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题总结">
+<meta property="og:url" content="http://yoursite.com/2018/10/15/面试题总结/index.html">
+<meta property="og:site_name" content="写的更多，做的很少">
+<meta property="og:description" content="基础篇解释一下面向对象的特征 面向对象的特征有封装、继承、多态 封装：是将对象关键特征和属性，封装到对象内部，与外界隔离。保证程序的健壮性 继承：子类继承父类具有的特征，有利于代码的复用性 多态：不同类对象对相同行为的不同反应  static语句块与非static语句块、构造器之间是怎样加载的 有父类的情况： 先加载父类的static语句块-&amp;gt;加载子类的static语句块-&amp;gt; 父类非s">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-15T13:50:39.381Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试题总结">
+<meta name="twitter:description" content="基础篇解释一下面向对象的特征 面向对象的特征有封装、继承、多态 封装：是将对象关键特征和属性，封装到对象内部，与外界隔离。保证程序的健壮性 继承：子类继承父类具有的特征，有利于代码的复用性 多态：不同类对象对相同行为的不同反应  static语句块与非static语句块、构造器之间是怎样加载的 有父类的情况： 先加载父类的static语句块-&amp;gt;加载子类的static语句块-&amp;gt; 父类非s">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/15/面试题总结/"/>
+
+
+
+
+
+  <title>面试题总结 | 写的更多，做的很少</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+      <a href="https://github.com/dasorb"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">写的更多，做的很少</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/面试题总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dasorb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="写的更多，做的很少">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试题总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T21:49:22+08:00">
+                2018-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h1><h2 id="解释一下面向对象的特征"><a href="#解释一下面向对象的特征" class="headerlink" title="解释一下面向对象的特征"></a>解释一下面向对象的特征</h2><blockquote>
+<p>面向对象的特征有封装、继承、多态</p>
+<p>封装：是将对象关键特征和属性，封装到对象内部，与外界隔离。保证程序的健壮性</p>
+<p>继承：子类继承父类具有的特征，有利于代码的复用性</p>
+<p>多态：不同类对象对相同行为的不同反应</p>
+</blockquote>
+<h2 id="static语句块与非static语句块、构造器之间是怎样加载的"><a href="#static语句块与非static语句块、构造器之间是怎样加载的" class="headerlink" title="static语句块与非static语句块、构造器之间是怎样加载的"></a>static语句块与非static语句块、构造器之间是怎样加载的</h2><blockquote>
+<p>有父类的情况：</p>
+<p>先加载父类的static语句块-&gt;加载子类的static语句块-&gt; 父类非static语句块-&gt;父类构造器</p>
+<p>-&gt;子类非static语句块-&gt;子类构造器</p>
+</blockquote>
+<h2 id="方法的重写和方法的重载的区别和条件"><a href="#方法的重写和方法的重载的区别和条件" class="headerlink" title="方法的重写和方法的重载的区别和条件"></a>方法的重写和方法的重载的区别和条件</h2><blockquote>
+<p>重写：是子类对父类方法的一种重写，只能比父类抛出的异常更少，访问权限不能比父类小。不能重写private修饰的方法</p>
+<p>重载：是同一个类中，有两个或两个以上相同方法名，但参数列表各不相同的方法，它们之间构成重载。其中参数列表中：参数的个数，参数的顺序，参数的类型至少有一个不同。</p>
+</blockquote>
+<h2 id="继承有什么缺点吗"><a href="#继承有什么缺点吗" class="headerlink" title="继承有什么缺点吗"></a>继承有什么缺点吗</h2><blockquote>
+<p>子类继承父类必须考虑父类具体的实现细节，重写方法，破坏了java语言的封装性。</p>
+</blockquote>
+<h2 id="解释面向对象和面向过程语言的特点"><a href="#解释面向对象和面向过程语言的特点" class="headerlink" title="解释面向对象和面向过程语言的特点"></a>解释面向对象和面向过程语言的特点</h2><blockquote>
+<p>面向过程语言，分析的是解决问题的具体步骤。</p>
+<p>面向对象，是将问题中的各个事务分解成对象，然后描述对象在问题中的具体行为。</p>
+</blockquote>
+<h2 id="和equals的区别"><a href="#和equals的区别" class="headerlink" title="==和equals的区别"></a>==和equals的区别</h2><blockquote>
+<p>基本类型之间使用==来判断是否相等。</p>
+<p>引用类型，用==是判断两者之间是否引用的是同一个对象。用equals是判断两者之间的等价性，如果一个类没有重写equals，默认使用的是父类object的equals方法。</p>
+</blockquote>
+<h2 id="hashcode和equals的区别和联系"><a href="#hashcode和equals的区别和联系" class="headerlink" title="hashcode和equals的区别和联系"></a>hashcode和equals的区别和联系</h2><blockquote>
+<p><strong>equals和hashcode方法都是判断两个对象是否相等一致</strong>，但是重写的equals里比较全面，比较复杂，所以<strong>效率比较低</strong>，而利用hashCode方法进行对相比，则只要生成一个hash值就可以了，<strong>效率很高</strong>。但是hashcode并不是完全可靠，有时候不同的对象他们生成的hashCode也会一样。而equals对比则是很可靠的，所以他们俩可以配合使用。equals相等，哈希值一定相等，哈希值相等，equals不一定相等。</p>
+</blockquote>
+<h2 id="描述一下jvm加载class文件的机制"><a href="#描述一下jvm加载class文件的机制" class="headerlink" title="描述一下jvm加载class文件的机制"></a>描述一下jvm加载class文件的机制</h2><blockquote>
+<p>jvm负责类的加载，连接，初始化。java中类的加载是由类加载器和他的子类完成，类的加载器会把.class文件的数据存入到一个字节数组中，然后产生与之相对应的.class对象爱过你，之后jvm进入连接阶段，会进行验证，准备，和解析操作，然后jvm对其进行初始化。</p>
+</blockquote>
+<h2 id="string不可变的好处"><a href="#string不可变的好处" class="headerlink" title="string不可变的好处"></a>string不可变的好处</h2><blockquote>
+<p>可以用作hashmap的key。</p>
+<p>因为不可变，所以在使用并发的时候，使用string是线程安全的。</p>
+</blockquote>
+<h2 id="new-String-“xyz“-创建了几个字符串对象"><a href="#new-String-“xyz“-创建了几个字符串对象" class="headerlink" title="new String (“xyz“)创建了几个字符串对象"></a>new String (“xyz“)创建了几个字符串对象</h2><blockquote>
+<p>创建了两个字符串对象，一个是在静态区，一个是new在堆中的对象，其中堆中的对象指向静态区的字符串</p>
+</blockquote>
+<h2 id="java中支持的基本数据类型有哪些"><a href="#java中支持的基本数据类型有哪些" class="headerlink" title="java中支持的基本数据类型有哪些"></a>java中支持的基本数据类型有哪些</h2><blockquote>
+<p>java中有8大基本数据类型：整型有byte short int long 浮点型有float double 字符型char 布尔型boolean</p>
+<p>其中byte占1字节，short占2字节，int占4字节，long占8字节，float占4字节，double占8字节，char占两个字节，布尔占1字节</p>
+</blockquote>
+<h2 id="什么自动装箱和自动拆箱"><a href="#什么自动装箱和自动拆箱" class="headerlink" title="什么自动装箱和自动拆箱"></a>什么自动装箱和自动拆箱</h2><blockquote>
+<p>java中基本类型都有与之对的包装类，目的是方便类型之间的相互转换，装箱就是将基本数据类型转换为包装类，拆箱就是把包装类转换为基本类型</p>
+</blockquote>
+<h2 id="Integer缓存池的问题"><a href="#Integer缓存池的问题" class="headerlink" title="Integer缓存池的问题"></a>Integer缓存池的问题</h2><blockquote>
+<p>java中整型自动装箱时，在-128-127范围之间转换时都是调用的缓存池中的对象</p>
+</blockquote>
+<h2 id="抽象类和接口的区别"><a href="#抽象类和接口的区别" class="headerlink" title="抽象类和接口的区别"></a>抽象类和接口的区别</h2><blockquote>
+<p>抽象类可以定义普通的成员变量，而接口定义的是static final修饰的变量</p>
+<p>抽象类只能单继承和finnal可以多继承。</p>
+<p>抽象类主要表现的是”是不是“的关系，而接口表现的是”有没有“概念。</p>
+<p>使用的时候，一般用抽象类定义成员变量，实现接口来扩展功能。</p>
+</blockquote>
+<h1 id="集合篇"><a href="#集合篇" class="headerlink" title="集合篇"></a>集合篇</h1><h2 id="常见的集合有哪些"><a href="#常见的集合有哪些" class="headerlink" title="常见的集合有哪些"></a>常见的集合有哪些</h2><blockquote>
+<p>常见的集合有两个大接口collection和map</p>
+<p>collection有两个常见的子接口：list和set一个表示有序集，一个无序集</p>
+<p>list常见的实现类有：快查询ArrayList，快插入LinkedList，vector</p>
+<p>set常见的实现类有：hashSet，treeSet</p>
+<p>map常见的实现类有：hashmap、treemap，hashTable，properties，concurrentHashMap</p>
+</blockquote>
+<h2 id="ConcurrentHashMap和HashTable和HashMap的区别"><a href="#ConcurrentHashMap和HashTable和HashMap的区别" class="headerlink" title="ConcurrentHashMap和HashTable和HashMap的区别"></a>ConcurrentHashMap和HashTable和HashMap的区别</h2><blockquote>
+<p>hashMap线程不安全，但是比hashTable存取效率高。hashTable线程安全。concurrentHashMap结合两者的优势，将hash默认分为16个桶，每次进行操作，之锁住当前用到的桶</p>
+</blockquote>
+<h2 id="hashMap的长度为什么是2的幂次方"><a href="#hashMap的长度为什么是2的幂次方" class="headerlink" title="hashMap的长度为什么是2的幂次方"></a>hashMap的长度为什么是2的幂次方</h2><blockquote>
+<p>因为哈希表中，key的定位是用元素的hash值 “与” 哈希表的长度-1,如果与的是偶数那么2进制最后一位永远是0，这样位置最后一位为1的空间使用不到。所以使用2的幂次减小浪费，减少重读，提高查询的效率。</p>
+</blockquote>
+<h2 id="ArrayList、HashSet、HashMap的初始容量"><a href="#ArrayList、HashSet、HashMap的初始容量" class="headerlink" title="ArrayList、HashSet、HashMap的初始容量"></a>ArrayList、HashSet、HashMap的初始容量</h2><blockquote>
+<p>ArrayList初始容量为10，当元素超过一半进行扩容，扩容大小是0.5倍+1</p>
+<p>HashSet和HashMap的初始容量为16，当元素超过0.75扩容，扩容大小是原容量的1倍</p>
+</blockquote>
+<h1 id="javaweb篇"><a href="#javaweb篇" class="headerlink" title="javaweb篇"></a>javaweb篇</h1><h2 id="session和cookie的区别"><a href="#session和cookie的区别" class="headerlink" title="session和cookie的区别"></a>session和cookie的区别</h2><blockquote>
+<p>cookie数据存放在客户端的浏览器上，session数据存放于服务器上，所以cookie不太安全，而session比较安全。</p>
+<p>session会随着会话的增多，占用更多的服务器性能，而cookie不会。</p>
+<p>cookie的保存的数据不能超过4k。</p>
+</blockquote>
+<h2 id="Http请求中的post和get方式的区别"><a href="#Http请求中的post和get方式的区别" class="headerlink" title="Http请求中的post和get方式的区别"></a>Http请求中的post和get方式的区别</h2><blockquote>
+<p>post方式比get方式更安全，因为get方式会直接作为url的一部分进行提交。而post不会被缓存。</p>
+<p>get方式做为url的一部分，所以会有url长度的限制，post发动的数据更大。</p>
+<p>但是post比get的请求方式慢，所以一般用post用于数据的写入和修改。get用于排序和筛选</p>
+</blockquote>
+<h2 id="MVC思想"><a href="#MVC思想" class="headerlink" title="MVC思想"></a>MVC思想</h2><blockquote>
+<p>mvc是一种软件架构的思想，将一个软件按照模型、视图、控制器来进行划分。</p>
+<p>模型用来封装业务逻辑，视图用来实现表示逻辑，控制器用来协调模型与视图。</p>
+<p>模型处理的业务逻辑要交给控制器，控制器选择视图来进行显示，视图要通过控制器来调用模型。</p>
+</blockquote>
+<h1 id="重点篇"><a href="#重点篇" class="headerlink" title="重点篇"></a>重点篇</h1><h2 id="九九乘法表有几种实现方式"><a href="#九九乘法表有几种实现方式" class="headerlink" title="九九乘法表有几种实现方式"></a>九九乘法表有几种实现方式</h2><p>方式一：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= j; i++) &#123;</span><br><span class="line">				System.out.print(j + <span class="string">"*"</span> + i + <span class="string">"="</span> + i * j + <span class="string">"\t"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方式二递归实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		print(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (i &gt; <span class="number">9</span> || j &gt; <span class="number">9</span> || j &gt; i)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span> (i == j) &#123;</span><br><span class="line">		System.out.println(i + <span class="string">"*"</span> + j + <span class="string">"="</span> + (i * j));</span><br><span class="line">		print(i + <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		System.out.print(i + <span class="string">"*"</span> + j + <span class="string">"="</span> + (i * j) + <span class="string">"\t"</span>);</span><br><span class="line">		print(i, j + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i>
+ java</a>
+          
+            <a href="/tags/个人总结/" rel="tag"><i class="fa fa-tag"></i>
+ 个人总结</a>
+          
+            <a href="/tags/面试/" rel="tag"><i class="fa fa-tag"></i>
+ 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/31/hadoop下的yarn和hdfs安装/" rel="next" title="hadoop的安装">
+                <i class="fa fa-chevron-left"></i> hadoop的安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.gif"
+                alt="Dasorb" />
+            
+              <p class="site-author-name" itemprop="name">Dasorb</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础篇"><span class="nav-number">1.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解释一下面向对象的特征"><span class="nav-number">1.1.</span> <span class="nav-text">解释一下面向对象的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static语句块与非static语句块、构造器之间是怎样加载的"><span class="nav-number">1.2.</span> <span class="nav-text">static语句块与非static语句块、构造器之间是怎样加载的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法的重写和方法的重载的区别和条件"><span class="nav-number">1.3.</span> <span class="nav-text">方法的重写和方法的重载的区别和条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承有什么缺点吗"><span class="nav-number">1.4.</span> <span class="nav-text">继承有什么缺点吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释面向对象和面向过程语言的特点"><span class="nav-number">1.5.</span> <span class="nav-text">解释面向对象和面向过程语言的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和equals的区别"><span class="nav-number">1.6.</span> <span class="nav-text">==和equals的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashcode和equals的区别和联系"><span class="nav-number">1.7.</span> <span class="nav-text">hashcode和equals的区别和联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描述一下jvm加载class文件的机制"><span class="nav-number">1.8.</span> <span class="nav-text">描述一下jvm加载class文件的机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string不可变的好处"><span class="nav-number">1.9.</span> <span class="nav-text">string不可变的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-String-“xyz“-创建了几个字符串对象"><span class="nav-number">1.10.</span> <span class="nav-text">new String (“xyz“)创建了几个字符串对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java中支持的基本数据类型有哪些"><span class="nav-number">1.11.</span> <span class="nav-text">java中支持的基本数据类型有哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么自动装箱和自动拆箱"><span class="nav-number">1.12.</span> <span class="nav-text">什么自动装箱和自动拆箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer缓存池的问题"><span class="nav-number">1.13.</span> <span class="nav-text">Integer缓存池的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类和接口的区别"><span class="nav-number">1.14.</span> <span class="nav-text">抽象类和接口的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合篇"><span class="nav-number">2.</span> <span class="nav-text">集合篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的集合有哪些"><span class="nav-number">2.1.</span> <span class="nav-text">常见的集合有哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ConcurrentHashMap和HashTable和HashMap的区别"><span class="nav-number">2.2.</span> <span class="nav-text">ConcurrentHashMap和HashTable和HashMap的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashMap的长度为什么是2的幂次方"><span class="nav-number">2.3.</span> <span class="nav-text">hashMap的长度为什么是2的幂次方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList、HashSet、HashMap的初始容量"><span class="nav-number">2.4.</span> <span class="nav-text">ArrayList、HashSet、HashMap的初始容量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javaweb篇"><span class="nav-number">3.</span> <span class="nav-text">javaweb篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#session和cookie的区别"><span class="nav-number">3.1.</span> <span class="nav-text">session和cookie的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http请求中的post和get方式的区别"><span class="nav-number">3.2.</span> <span class="nav-text">Http请求中的post和get方式的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC思想"><span class="nav-number">3.3.</span> <span class="nav-text">MVC思想</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重点篇"><span class="nav-number">4.</span> <span class="nav-text">重点篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#九九乘法表有几种实现方式"><span class="nav-number">4.1.</span> <span class="nav-text">九九乘法表有几种实现方式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dasorb</span>
+
+  
+</div>
+
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+  <div class="theme-info">主题  <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共3.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
