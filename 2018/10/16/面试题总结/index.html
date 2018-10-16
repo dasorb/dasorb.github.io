@@ -83,11 +83,11 @@
 <meta name="keywords" content="java,个人总结,面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试题总结">
-<meta property="og:url" content="http://yoursite.com/2018/10/15/面试题总结/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/10/16/面试题总结/index.html">
 <meta property="og:site_name" content="写的更多，做的很少">
 <meta property="og:description" content="基础篇解释一下面向对象的特征 面向对象的特征有封装、继承、多态 封装：是将对象关键特征和属性，封装到对象内部，与外界隔离。保证程序的健壮性 继承：子类继承父类具有的特征，有利于代码的复用性 多态：不同类对象对相同行为的不同反应  static语句块与非static语句块、构造器之间是怎样加载的 有父类的情况： 先加载父类的static语句块-&amp;gt;加载子类的static语句块-&amp;gt; 父类非s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-15T13:50:39.381Z">
+<meta property="og:updated_time" content="2018-10-16T12:46:05.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题总结">
 <meta name="twitter:description" content="基础篇解释一下面向对象的特征 面向对象的特征有封装、继承、多态 封装：是将对象关键特征和属性，封装到对象内部，与外界隔离。保证程序的健壮性 继承：子类继承父类具有的特征，有利于代码的复用性 多态：不同类对象对相同行为的不同反应  static语句块与非static语句块、构造器之间是怎样加载的 有父类的情况： 先加载父类的static语句块-&amp;gt;加载子类的static语句块-&amp;gt; 父类非s">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/15/面试题总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/16/面试题总结/"/>
 
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/面试题总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/16/面试题总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dasorb">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T21:49:22+08:00">
-                2018-10-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-16T20:45:40+08:00">
+                2018-10-16
               </time>
             
 
@@ -416,6 +416,35 @@
 <p>ArrayList初始容量为10，当元素超过一半进行扩容，扩容大小是0.5倍+1</p>
 <p>HashSet和HashMap的初始容量为16，当元素超过0.75扩容，扩容大小是原容量的1倍</p>
 </blockquote>
+<h2 id="List和Set区别"><a href="#List和Set区别" class="headerlink" title="List和Set区别"></a>List和Set区别</h2><blockquote>
+<p>list的实现类有序且元素可重复</p>
+<p>set的实现类无序且元素不可重复，无序指插入顺序，和取出顺序不一致。</p>
+</blockquote>
+<h1 id="多线程篇"><a href="#多线程篇" class="headerlink" title="多线程篇"></a>多线程篇</h1><h2 id="线程和进程的概念、并行和并发的概念"><a href="#线程和进程的概念、并行和并发的概念" class="headerlink" title="线程和进程的概念、并行和并发的概念"></a>线程和进程的概念、并行和并发的概念</h2><blockquote>
+<p>当一个程序调入内存中运行后，就成了进程，进程指进行中的程序。</p>
+<p>一个进程中，可能包含多个顺序执行流，每个顺序执行流就是一个线程。</p>
+<p>并发，同一时刻只能有同一条指令运行，但由于CPU轮换执行速度，在宏观上看就有多条指令同时执行。</p>
+<p>并行，同一时刻多条指令在多个处理机上同时执行。</p>
+</blockquote>
+<h2 id="进程间通信的方式"><a href="#进程间通信的方式" class="headerlink" title="进程间通信的方式"></a>进程间通信的方式</h2><blockquote>
+<p>传统的进程间通信的方式：管道，命名管道，信号量，消息队列，共享内存，socket</p>
+<p>java中可以采用的方法：socket，rmi,webservice,webServler。</p>
+<p>线程间的通信可以直接传入共享的变量来实现。</p>
+</blockquote>
+<h2 id="创建线程的三种方式"><a href="#创建线程的三种方式" class="headerlink" title="创建线程的三种方式"></a>创建线程的三种方式</h2><blockquote>
+<p>继承Thread父类创建线程，实现Runnable接口创建线程，实现Callable接口</p>
+</blockquote>
+<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><blockquote>
+<p>当多个线程访问某个方法时，不管通过怎样的调用方式，如何交替执行，我们在主程序中不需要去做任何的同步，这个类的结果行为和我们设想的结果行为相同，那么这个方法就是线程安全的。</p>
+</blockquote>
+<h2 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h2><blockquote>
+<p>新建(New)、就绪(Runnable)、运行(Running)、阻塞(Blocked)和死亡(Dead)5种状态</p>
+<p>新建：当创建Thread类的要给实例时，此线程进入新建状态。</p>
+<p>就绪：线程已经启动，正在等待被分配给cpu时间片。</p>
+<p>运行：线程获得CPU资源正在执行run方法。</p>
+<p>阻塞：由于某种原因导致正在运行的线程让出CPU并暂停自己的执行，即进入堵塞状态。</p>
+<p>死亡：当线程执行完毕或被其他线程杀死，线程就进入死亡状态，这是线程不可能再进入就绪状态等待执行。</p>
+</blockquote>
 <h1 id="javaweb篇"><a href="#javaweb篇" class="headerlink" title="javaweb篇"></a>javaweb篇</h1><h2 id="session和cookie的区别"><a href="#session和cookie的区别" class="headerlink" title="session和cookie的区别"></a>session和cookie的区别</h2><blockquote>
 <p>cookie数据存放在客户端的浏览器上，session数据存放于服务器上，所以cookie不太安全，而session比较安全。</p>
 <p>session会随着会话的增多，占用更多的服务器性能，而cookie不会。</p>
@@ -423,13 +452,71 @@
 </blockquote>
 <h2 id="Http请求中的post和get方式的区别"><a href="#Http请求中的post和get方式的区别" class="headerlink" title="Http请求中的post和get方式的区别"></a>Http请求中的post和get方式的区别</h2><blockquote>
 <p>post方式比get方式更安全，因为get方式会直接作为url的一部分进行提交。而post不会被缓存。</p>
-<p>get方式做为url的一部分，所以会有url长度的限制，post发动的数据更大。</p>
+<p>get方式做为url的一部分，所以会有url长度的限制，post的数据更大。</p>
 <p>但是post比get的请求方式慢，所以一般用post用于数据的写入和修改。get用于排序和筛选</p>
 </blockquote>
 <h2 id="MVC思想"><a href="#MVC思想" class="headerlink" title="MVC思想"></a>MVC思想</h2><blockquote>
 <p>mvc是一种软件架构的思想，将一个软件按照模型、视图、控制器来进行划分。</p>
 <p>模型用来封装业务逻辑，视图用来实现表示逻辑，控制器用来协调模型与视图。</p>
 <p>模型处理的业务逻辑要交给控制器，控制器选择视图来进行显示，视图要通过控制器来调用模型。</p>
+</blockquote>
+<h1 id="框架篇"><a href="#框架篇" class="headerlink" title="框架篇"></a>框架篇</h1><h2 id="spring的IOC和AOP"><a href="#spring的IOC和AOP" class="headerlink" title="spring的IOC和AOP"></a>spring的IOC和AOP</h2><blockquote>
+<p>ioc 控制反转，将对象的依赖关系交给spring容器，使用配置文件来创建所以依赖的对象，由主动创建对象改为被动获取对象。</p>
+<p>aop：面向切面编程，将功能代码从业务逻辑中分离出来。</p>
+</blockquote>
+<h2 id="aop的实现方式有哪几种？如何选择"><a href="#aop的实现方式有哪几种？如何选择" class="headerlink" title="aop的实现方式有哪几种？如何选择"></a>aop的实现方式有哪几种？如何选择</h2><blockquote>
+<p>有两种，分别是jdk动态代理实现和cglib实现，如果目标对象实现了接口，默认采用jdk动态代理实现，可以强制使用cglib。如果目标对象没有实现接口，必须采用cglib库进行实现。</p>
+</blockquote>
+<h2 id="jdk动态代理如何实现？"><a href="#jdk动态代理如何实现？" class="headerlink" title="jdk动态代理如何实现？"></a>jdk动态代理如何实现？</h2><blockquote>
+<p>创建一个代理类实现InvocationHadler接口，使用Proxy.newProxyInstance()方法生成代理对象</p>
+</blockquote>
+<h2 id="springMVC的核心控制器是什么？消息处理流程有哪些"><a href="#springMVC的核心控制器是什么？消息处理流程有哪些" class="headerlink" title="springMVC的核心控制器是什么？消息处理流程有哪些"></a>springMVC的核心控制器是什么？消息处理流程有哪些</h2><blockquote>
+<p>核心处理器为DispatchServlet。</p>
+<p>首先请求来到前端控制器，会根据映射处理器HandlerMapping，调用相应的Controller</p>
+<p>Controller返回一个ModelAndView数据加视图名对象。根据视图解析器调用页面，然后显示在浏览器中。</p>
+</blockquote>
+<h2 id="springMVC运行流程"><a href="#springMVC运行流程" class="headerlink" title="springMVC运行流程"></a>springMVC运行流程</h2><blockquote>
+<ol>
+<li><p>用户发送请求到DispatchServlet</p>
+</li>
+<li><p>DispatchServlet根据请求路径查询具体的Handler</p>
+</li>
+<li><p>HandlerMapping返回一个HandlerExcutionChain给DispatchServlet</p>
+<p>HandlerExcutionChain：Handler和Interceptor集合</p>
+</li>
+<li><p>DispatchServlet调用HandlerAdapter适配器</p>
+</li>
+<li><p>HandlerAdaper调用具体的Handler处理业务</p>
+</li>
+<li><p>HandlerAdaper处理结束返回一个具体的ModelAndView给适配器</p>
+<p>ModelAndView：model-&gt;数据模型，view-&gt;视图名称</p>
+</li>
+<li><p>适配器将ModelAndView给DispatchServlet。</p>
+</li>
+<li><p>DispathServlet把视图名称交给视图解析器ViewResolver</p>
+</li>
+<li><p>ViewResolver返回一个具体的视图给DispatchServlet</p>
+</li>
+<li><p>渲染视图，展示给用户</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="mybatis中-和-占位符的区别？"><a href="#mybatis中-和-占位符的区别？" class="headerlink" title="mybatis中#和$占位符的区别？"></a>mybatis中#和$占位符的区别？</h2><blockquote>
+<p>使用#当占位符，可以提前预编译语句，相当于使用jdbc中的preparedStatement，可以防止sql注入问题，将传入的参数当字符串处理。而$不会当作字符串处理，是什么就是什么。</p>
+</blockquote>
+<h1 id="数据库篇"><a href="#数据库篇" class="headerlink" title="数据库篇"></a>数据库篇</h1><h2 id="如何开启mysql的事务"><a href="#如何开启mysql的事务" class="headerlink" title="如何开启mysql的事务"></a>如何开启mysql的事务</h2><blockquote>
+<p>setAutoCommit=0;</p>
+<p>commit;</p>
+</blockquote>
+<h2 id="事务是什么？事务的特性是？"><a href="#事务是什么？事务的特性是？" class="headerlink" title="事务是什么？事务的特性是？"></a>事务是什么？事务的特性是？</h2><blockquote>
+<p>事务四大特性：原子性，一致性，隔离性，持久性</p>
+<p>使用事务是为了保证数据的一致性和完整性。</p>
+</blockquote>
+<h2 id="事务的并发问题？mysql如何解决"><a href="#事务的并发问题？mysql如何解决" class="headerlink" title="事务的并发问题？mysql如何解决"></a>事务的并发问题？mysql如何解决</h2><blockquote>
+<p>事务的并发问题：</p>
+<p>脏读(修改)，不可重复读，幻读(针对插入、删除)。</p>
+<p>sql标准定义了四个隔离级别：</p>
+<p>read uncommited,read committed,repeatable read,serializable</p>
 </blockquote>
 <h1 id="重点篇"><a href="#重点篇" class="headerlink" title="重点篇"></a>重点篇</h1><h2 id="九九乘法表有几种实现方式"><a href="#九九乘法表有几种实现方式" class="headerlink" title="九九乘法表有几种实现方式"></a>九九乘法表有几种实现方式</h2><p>方式一：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= j; i++) &#123;</span><br><span class="line">				System.out.print(j + <span class="string">"*"</span> + i + <span class="string">"="</span> + i * j + <span class="string">"\t"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -616,7 +703,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础篇"><span class="nav-number">1.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解释一下面向对象的特征"><span class="nav-number">1.1.</span> <span class="nav-text">解释一下面向对象的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static语句块与非static语句块、构造器之间是怎样加载的"><span class="nav-number">1.2.</span> <span class="nav-text">static语句块与非static语句块、构造器之间是怎样加载的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法的重写和方法的重载的区别和条件"><span class="nav-number">1.3.</span> <span class="nav-text">方法的重写和方法的重载的区别和条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承有什么缺点吗"><span class="nav-number">1.4.</span> <span class="nav-text">继承有什么缺点吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释面向对象和面向过程语言的特点"><span class="nav-number">1.5.</span> <span class="nav-text">解释面向对象和面向过程语言的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和equals的区别"><span class="nav-number">1.6.</span> <span class="nav-text">==和equals的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashcode和equals的区别和联系"><span class="nav-number">1.7.</span> <span class="nav-text">hashcode和equals的区别和联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描述一下jvm加载class文件的机制"><span class="nav-number">1.8.</span> <span class="nav-text">描述一下jvm加载class文件的机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string不可变的好处"><span class="nav-number">1.9.</span> <span class="nav-text">string不可变的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-String-“xyz“-创建了几个字符串对象"><span class="nav-number">1.10.</span> <span class="nav-text">new String (“xyz“)创建了几个字符串对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java中支持的基本数据类型有哪些"><span class="nav-number">1.11.</span> <span class="nav-text">java中支持的基本数据类型有哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么自动装箱和自动拆箱"><span class="nav-number">1.12.</span> <span class="nav-text">什么自动装箱和自动拆箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer缓存池的问题"><span class="nav-number">1.13.</span> <span class="nav-text">Integer缓存池的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类和接口的区别"><span class="nav-number">1.14.</span> <span class="nav-text">抽象类和接口的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合篇"><span class="nav-number">2.</span> <span class="nav-text">集合篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的集合有哪些"><span class="nav-number">2.1.</span> <span class="nav-text">常见的集合有哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ConcurrentHashMap和HashTable和HashMap的区别"><span class="nav-number">2.2.</span> <span class="nav-text">ConcurrentHashMap和HashTable和HashMap的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashMap的长度为什么是2的幂次方"><span class="nav-number">2.3.</span> <span class="nav-text">hashMap的长度为什么是2的幂次方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList、HashSet、HashMap的初始容量"><span class="nav-number">2.4.</span> <span class="nav-text">ArrayList、HashSet、HashMap的初始容量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javaweb篇"><span class="nav-number">3.</span> <span class="nav-text">javaweb篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#session和cookie的区别"><span class="nav-number">3.1.</span> <span class="nav-text">session和cookie的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http请求中的post和get方式的区别"><span class="nav-number">3.2.</span> <span class="nav-text">Http请求中的post和get方式的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC思想"><span class="nav-number">3.3.</span> <span class="nav-text">MVC思想</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重点篇"><span class="nav-number">4.</span> <span class="nav-text">重点篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#九九乘法表有几种实现方式"><span class="nav-number">4.1.</span> <span class="nav-text">九九乘法表有几种实现方式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础篇"><span class="nav-number">1.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解释一下面向对象的特征"><span class="nav-number">1.1.</span> <span class="nav-text">解释一下面向对象的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static语句块与非static语句块、构造器之间是怎样加载的"><span class="nav-number">1.2.</span> <span class="nav-text">static语句块与非static语句块、构造器之间是怎样加载的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法的重写和方法的重载的区别和条件"><span class="nav-number">1.3.</span> <span class="nav-text">方法的重写和方法的重载的区别和条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承有什么缺点吗"><span class="nav-number">1.4.</span> <span class="nav-text">继承有什么缺点吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释面向对象和面向过程语言的特点"><span class="nav-number">1.5.</span> <span class="nav-text">解释面向对象和面向过程语言的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和equals的区别"><span class="nav-number">1.6.</span> <span class="nav-text">==和equals的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashcode和equals的区别和联系"><span class="nav-number">1.7.</span> <span class="nav-text">hashcode和equals的区别和联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描述一下jvm加载class文件的机制"><span class="nav-number">1.8.</span> <span class="nav-text">描述一下jvm加载class文件的机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string不可变的好处"><span class="nav-number">1.9.</span> <span class="nav-text">string不可变的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-String-“xyz“-创建了几个字符串对象"><span class="nav-number">1.10.</span> <span class="nav-text">new String (“xyz“)创建了几个字符串对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java中支持的基本数据类型有哪些"><span class="nav-number">1.11.</span> <span class="nav-text">java中支持的基本数据类型有哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么自动装箱和自动拆箱"><span class="nav-number">1.12.</span> <span class="nav-text">什么自动装箱和自动拆箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer缓存池的问题"><span class="nav-number">1.13.</span> <span class="nav-text">Integer缓存池的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类和接口的区别"><span class="nav-number">1.14.</span> <span class="nav-text">抽象类和接口的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合篇"><span class="nav-number">2.</span> <span class="nav-text">集合篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的集合有哪些"><span class="nav-number">2.1.</span> <span class="nav-text">常见的集合有哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ConcurrentHashMap和HashTable和HashMap的区别"><span class="nav-number">2.2.</span> <span class="nav-text">ConcurrentHashMap和HashTable和HashMap的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashMap的长度为什么是2的幂次方"><span class="nav-number">2.3.</span> <span class="nav-text">hashMap的长度为什么是2的幂次方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList、HashSet、HashMap的初始容量"><span class="nav-number">2.4.</span> <span class="nav-text">ArrayList、HashSet、HashMap的初始容量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List和Set区别"><span class="nav-number">2.5.</span> <span class="nav-text">List和Set区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多线程篇"><span class="nav-number">3.</span> <span class="nav-text">多线程篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程和进程的概念、并行和并发的概念"><span class="nav-number">3.1.</span> <span class="nav-text">线程和进程的概念、并行和并发的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程间通信的方式"><span class="nav-number">3.2.</span> <span class="nav-text">进程间通信的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建线程的三种方式"><span class="nav-number">3.3.</span> <span class="nav-text">创建线程的三种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程安全"><span class="nav-number">3.4.</span> <span class="nav-text">线程安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的生命周期"><span class="nav-number">3.5.</span> <span class="nav-text">线程的生命周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javaweb篇"><span class="nav-number">4.</span> <span class="nav-text">javaweb篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#session和cookie的区别"><span class="nav-number">4.1.</span> <span class="nav-text">session和cookie的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http请求中的post和get方式的区别"><span class="nav-number">4.2.</span> <span class="nav-text">Http请求中的post和get方式的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC思想"><span class="nav-number">4.3.</span> <span class="nav-text">MVC思想</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#框架篇"><span class="nav-number">5.</span> <span class="nav-text">框架篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#spring的IOC和AOP"><span class="nav-number">5.1.</span> <span class="nav-text">spring的IOC和AOP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aop的实现方式有哪几种？如何选择"><span class="nav-number">5.2.</span> <span class="nav-text">aop的实现方式有哪几种？如何选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk动态代理如何实现？"><span class="nav-number">5.3.</span> <span class="nav-text">jdk动态代理如何实现？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springMVC的核心控制器是什么？消息处理流程有哪些"><span class="nav-number">5.4.</span> <span class="nav-text">springMVC的核心控制器是什么？消息处理流程有哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springMVC运行流程"><span class="nav-number">5.5.</span> <span class="nav-text">springMVC运行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis中-和-占位符的区别？"><span class="nav-number">5.6.</span> <span class="nav-text">mybatis中#和$占位符的区别？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库篇"><span class="nav-number">6.</span> <span class="nav-text">数据库篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何开启mysql的事务"><span class="nav-number">6.1.</span> <span class="nav-text">如何开启mysql的事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务是什么？事务的特性是？"><span class="nav-number">6.2.</span> <span class="nav-text">事务是什么？事务的特性是？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的并发问题？mysql如何解决"><span class="nav-number">6.3.</span> <span class="nav-text">事务的并发问题？mysql如何解决</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重点篇"><span class="nav-number">7.</span> <span class="nav-text">重点篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#九九乘法表有几种实现方式"><span class="nav-number">7.1.</span> <span class="nav-text">九九乘法表有几种实现方式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -664,7 +751,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.5k字</span>
+  <span class="post-count">博客全站共4.6k字</span>
 </div>
         
 
