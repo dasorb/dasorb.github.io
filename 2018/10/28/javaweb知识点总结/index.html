@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="npm,hexo,github," />
+  <meta name="keywords" content="java,个人总结," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Quick StartCreate a new post1$ hexo new &quot;My New Post&quot; More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$">
-<meta name="keywords" content="npm,hexo,github">
+<meta name="description" content="一、servlet的容器TomcatTomcat是一款免费开源的web应用服务器，可以用它在服务端部署web应用，以供用户来访问 tomcat目录bin，存放可执行文件，如启动服务器的脚本startup.bat conf，存放服务器的配置文件server.xml lib，tomcat运行时需要的依赖jar包 log,日志文件记录出错信息。 temp，临时文件。 webapps，可执行的web应用项">
+<meta name="keywords" content="java,个人总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于hexo和gihub搭建博客">
-<meta property="og:url" content="http://yoursite.com/2018/04/20/hello-world/index.html">
+<meta property="og:title" content="javaWeb知识点总结">
+<meta property="og:url" content="http://yoursite.com/2018/10/28/javaweb知识点总结/index.html">
 <meta property="og:site_name" content="写的更多，做的很少">
-<meta property="og:description" content="Quick StartCreate a new post1$ hexo new &quot;My New Post&quot; More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$">
+<meta property="og:description" content="一、servlet的容器TomcatTomcat是一款免费开源的web应用服务器，可以用它在服务端部署web应用，以供用户来访问 tomcat目录bin，存放可执行文件，如启动服务器的脚本startup.bat conf，存放服务器的配置文件server.xml lib，tomcat运行时需要的依赖jar包 log,日志文件记录出错信息。 temp，临时文件。 webapps，可执行的web应用项">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-31T02:15:28.343Z">
+<meta property="og:updated_time" content="2018-10-28T07:34:00.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于hexo和gihub搭建博客">
-<meta name="twitter:description" content="Quick StartCreate a new post1$ hexo new &quot;My New Post&quot; More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$">
+<meta name="twitter:title" content="javaWeb知识点总结">
+<meta name="twitter:description" content="一、servlet的容器TomcatTomcat是一款免费开源的web应用服务器，可以用它在服务端部署web应用，以供用户来访问 tomcat目录bin，存放可执行文件，如启动服务器的脚本startup.bat conf，存放服务器的配置文件server.xml lib，tomcat运行时需要的依赖jar包 log,日志文件记录出错信息。 temp，临时文件。 webapps，可执行的web应用项">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/20/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/28/javaweb知识点总结/"/>
 
 
 
 
 
-  <title>基于hexo和gihub搭建博客 | 写的更多，做的很少</title>
+  <title>javaWeb知识点总结 | 写的更多，做的很少</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/javaweb知识点总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dasorb">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于hexo和gihub搭建博客</h1>
+          <h1 class="post-title" itemprop="name headline">javaWeb知识点总结</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T20:39:51+08:00">
-                2018-04-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-28T15:32:41+08:00">
+                2018-10-28
               </time>
             
 
@@ -307,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建博客/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建博客</span>
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
                   </a>
                 </span>
 
@@ -344,14 +344,45 @@
       
 
       
-        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="一、servlet的容器Tomcat"><a href="#一、servlet的容器Tomcat" class="headerlink" title="一、servlet的容器Tomcat"></a>一、servlet的容器Tomcat</h1><p>Tomcat是一款免费开源的web应用服务器，可以用它在服务端部署web应用，以供用户来访问</p>
+<h2 id="tomcat目录"><a href="#tomcat目录" class="headerlink" title="tomcat目录"></a>tomcat目录</h2><p>bin，存放可执行文件，如启动服务器的脚本startup.bat</p>
+<p>conf，存放服务器的配置文件server.xml</p>
+<p>lib，tomcat运行时需要的依赖jar包</p>
+<p>log,日志文件记录出错信息。</p>
+<p>temp，临时文件。</p>
+<p>webapps，可执行的web应用项目</p>
+<p>work，存放jsp运行后生成的java文件和编译成的class类文件</p>
+<h1 id="二、jsp"><a href="#二、jsp" class="headerlink" title="二、jsp"></a>二、jsp</h1><p>jsp是java服务器页面，可以在页面中编写html代码及一些java指令，容器可以将jsp翻译成java文件，编译并运行</p>
+<h2 id="脚本和指令"><a href="#脚本和指令" class="headerlink" title="脚本和指令"></a>脚本和指令</h2><p>脚本：</p>
+<ol>
+<li>&lt;%定义局部变量和java代码%&gt;</li>
+<li>&lt;%!定义全局变量，方法%&gt;</li>
+<li>&lt;%=输出表达式%&gt;</li>
+</ol>
+<p>指令：</p>
+<ol>
+<li>page指令可以指定jsp页面使用的脚本语言，导入类，设置jsp文件编码，浏览器解析jsp的编码</li>
+<li>include指令可以导入相应的jsp页面的内容到本页面汇总</li>
+</ol>
+<h2 id="jsp的九大内置对象"><a href="#jsp的九大内置对象" class="headerlink" title="jsp的九大内置对象"></a>jsp的九大内置对象</h2><p>pageContext、request、session、application，config、response、out、exception、page</p>
+<h2 id="jsp的四大域对象"><a href="#jsp的四大域对象" class="headerlink" title="jsp的四大域对象"></a>jsp的四大域对象</h2><p>request：</p>
+<ol>
+<li><p>常用方法有getParameter，setCharacterEncoding()，getRequestDistpathcer().forward()，getServletContext9();</p>
+</li>
+<li><p>get与post请求方式的区别：get方式的请求在地址栏显示请求信息，一是不安全，二是长度有限制。</p>
+<p>但是post比get方式的请求慢，所以get一般用于排序和筛选</p>
+</li>
+</ol>
+<p>session：</p>
+<ol>
+<li>session与cookie的区别：cookie不是内置对象，是一个由客户端生成，再发送给客户端保存的对象。session存放于服务器上，而cookie保存于客户端本地。cookie只能保存字符串，而session保存object对象。</li>
+<li>session与cookie运行机制：第一次请求会产生sessionid，用于保存客户端信息，并且把sessionid赋值给jessionid保存到cookie中，一一对应。</li>
+</ol>
+<p>application：</p>
+<ol>
+<li>常用方法：getContextPath(),getRealPath()</li>
+</ol>
+<h1 id="三、servlet"><a href="#三、servlet" class="headerlink" title="三、servlet"></a>三、servlet</h1><p>servlet的生命周期：加载、初始化、服务，销毁、卸载</p>
 
       
     </div>
@@ -369,14 +400,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/npm/" rel="tag"><i class="fa fa-tag"></i>
- npm</a>
+            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i>
+ java</a>
           
-            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i>
- hexo</a>
-          
-            <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i>
- github</a>
+            <a href="/tags/个人总结/" rel="tag"><i class="fa fa-tag"></i>
+ 个人总结</a>
           
         </div>
       
@@ -389,14 +417,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/10/16/面试题总结/" rel="next" title="面试题总结">
+                <i class="fa fa-chevron-left"></i> 面试题总结
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/20/hello-china/" rel="prev" title="hadoop下的mapreduce和hdfs的安装">
-                hadoop下的mapreduce和hdfs的安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/28/ssm框架知识点总结/" rel="prev" title="ssm框架知识点总结">
+                ssm框架知识点总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -533,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、servlet的容器Tomcat"><span class="nav-number">1.</span> <span class="nav-text">一、servlet的容器Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat目录"><span class="nav-number">1.1.</span> <span class="nav-text">tomcat目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、jsp"><span class="nav-number">2.</span> <span class="nav-text">二、jsp</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本和指令"><span class="nav-number">2.1.</span> <span class="nav-text">脚本和指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp的九大内置对象"><span class="nav-number">2.2.</span> <span class="nav-text">jsp的九大内置对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp的四大域对象"><span class="nav-number">2.3.</span> <span class="nav-text">jsp的四大域对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、servlet"><span class="nav-number">3.</span> <span class="nav-text">三、servlet</span></a></li></ol></div>
             
 
           </div>
