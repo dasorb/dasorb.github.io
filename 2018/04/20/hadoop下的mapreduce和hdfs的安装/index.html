@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java,个人总结," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="一、servlet的容器TomcatTomcat是一款免费开源的web应用服务器，可以用它在服务端部署web应用，以供用户来访问 tomcat目录bin，存放可执行文件，如启动服务器的脚本startup.bat conf，存放服务器的配置文件server.xml lib，tomcat运行时需要的依赖jar包 log,日志文件记录出错信息。 temp，临时文件。 webapps，可执行的web应用项">
-<meta name="keywords" content="java,个人总结">
+<meta name="description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javaWeb知识点总结">
-<meta property="og:url" content="http://yoursite.com/2018/10/28/javaweb知识点总结/index.html">
+<meta property="og:title" content="hadoop下的mapreduce和hdfs的安装">
+<meta property="og:url" content="http://yoursite.com/2018/04/20/hadoop下的mapreduce和hdfs的安装/index.html">
 <meta property="og:site_name" content="写的更多，做的很少">
-<meta property="og:description" content="一、servlet的容器TomcatTomcat是一款免费开源的web应用服务器，可以用它在服务端部署web应用，以供用户来访问 tomcat目录bin，存放可执行文件，如启动服务器的脚本startup.bat conf，存放服务器的配置文件server.xml lib，tomcat运行时需要的依赖jar包 log,日志文件记录出错信息。 temp，临时文件。 webapps，可执行的web应用项">
+<meta property="og:description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-28T07:34:00.347Z">
+<meta property="og:updated_time" content="2018-05-31T02:23:39.204Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javaWeb知识点总结">
-<meta name="twitter:description" content="一、servlet的容器TomcatTomcat是一款免费开源的web应用服务器，可以用它在服务端部署web应用，以供用户来访问 tomcat目录bin，存放可执行文件，如启动服务器的脚本startup.bat conf，存放服务器的配置文件server.xml lib，tomcat运行时需要的依赖jar包 log,日志文件记录出错信息。 temp，临时文件。 webapps，可执行的web应用项">
+<meta name="twitter:title" content="hadoop下的mapreduce和hdfs的安装">
+<meta name="twitter:description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/28/javaweb知识点总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/20/hadoop下的mapreduce和hdfs的安装/"/>
 
 
 
 
 
-  <title>javaWeb知识点总结 | 写的更多，做的很少</title>
+  <title>hadoop下的mapreduce和hdfs的安装 | 写的更多，做的很少</title>
   
 
 
@@ -255,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/javaweb知识点总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/hadoop下的mapreduce和hdfs的安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dasorb">
@@ -272,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">javaWeb知识点总结</h1>
+          <h1 class="post-title" itemprop="name headline">hadoop下的mapreduce和hdfs的安装</h1>
         
 
         <div class="post-meta">
@@ -284,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-28T15:32:41+08:00">
-                2018-10-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T20:58:54+08:00">
+                2018-04-20
               </time>
             
 
@@ -294,28 +293,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -344,45 +321,69 @@
       
 
       
-        <h1 id="一、servlet的容器Tomcat"><a href="#一、servlet的容器Tomcat" class="headerlink" title="一、servlet的容器Tomcat"></a>一、servlet的容器Tomcat</h1><p>Tomcat是一款免费开源的web应用服务器，可以用它在服务端部署web应用，以供用户来访问</p>
-<h2 id="tomcat目录"><a href="#tomcat目录" class="headerlink" title="tomcat目录"></a>tomcat目录</h2><p>bin，存放可执行文件，如启动服务器的脚本startup.bat</p>
-<p>conf，存放服务器的配置文件server.xml</p>
-<p>lib，tomcat运行时需要的依赖jar包</p>
-<p>log,日志文件记录出错信息。</p>
-<p>temp，临时文件。</p>
-<p>webapps，可执行的web应用项目</p>
-<p>work，存放jsp运行后生成的java文件和编译成的class类文件</p>
-<h1 id="二、jsp"><a href="#二、jsp" class="headerlink" title="二、jsp"></a>二、jsp</h1><p>jsp是java服务器页面，可以在页面中编写html代码及一些java指令，容器可以将jsp翻译成java文件，编译并运行</p>
-<h2 id="脚本和指令"><a href="#脚本和指令" class="headerlink" title="脚本和指令"></a>脚本和指令</h2><p>脚本：</p>
+        <p>分布式文件系统HDFS：HDFS是GFS的克隆版<br>    特点：多副本，容错性。</p>
+<p>资源调度系统YARN：负责整个集群资源的管理和调度</p>
+<p>分布式计算框架MapReduce</p>
+<h2 id="查看网络连接是否正常"><a href="#查看网络连接是否正常" class="headerlink" title="查看网络连接是否正常"></a>查看网络连接是否正常</h2><p>使用 ping 测试网络连接是否通常</p>
+<p>如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。</p>
+<p>否则请给机器设置静态IP：</p>
+<p>etc/network/interfaces</p>
+<h2 id="安装SSH服务器通信软件"><a href="#安装SSH服务器通信软件" class="headerlink" title="安装SSH服务器通信软件"></a>安装SSH服务器通信软件</h2><h4 id="登陆root用户"><a href="#登陆root用户" class="headerlink" title="登陆root用户"></a>登陆root用户</h4><p>设置root用户密码 sudo passwd root<br>启动root用户 su root</p>
+<h4 id="安装ssh软件"><a href="#安装ssh软件" class="headerlink" title="安装ssh软件"></a>安装ssh软件</h4><p>安装命令 apt-get install openssh-server</p>
+<p>启动服务 service ssh start</p>
+<p>查看进程 ps -e |grep ssh</p>
+<h4 id="配置ssh使其允许远程连接"><a href="#配置ssh使其允许远程连接" class="headerlink" title="配置ssh使其允许远程连接"></a>配置ssh使其允许远程连接</h4><p>打开文件：<code>/etc/ssh/sshd_config</code><br>修改代码：<code>PermitRootLogin yes</code><br>重启ssh服务：<code>service ssh restart</code></p>
+<p>使用putty.exe程序在windows上打开session会话输入地址远程打开LINUX终端</p>
+<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p>因为hadoop是java编写的所以需要java开发环境的支持，才能运行</p>
 <ol>
-<li>&lt;%定义局部变量和java代码%&gt;</li>
-<li>&lt;%!定义全局变量，方法%&gt;</li>
-<li>&lt;%=输出表达式%&gt;</li>
+<li>创建目录：<code>/usr/local/jdk</code></li>
+<li>下载文件：(选用)<code>wget 下载地址</code></li>
+<li>解压文件到目录：<code>tar -xvzf ... -C ...</code></li>
 </ol>
-<p>指令：</p>
+<h4 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h4><p>在<code>/etc/profile</code>中添加代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk/jdk1.8.0_171</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure></p>
+<p>生效环境变量：<code>source /etc/profile</code></p>
+<p>测试安装成功：<code>java -version</code></p>
+<p>wincp.exe用于上传文件到Linux虚拟机</p>
+<h2 id="安装hadoop"><a href="#安装hadoop" class="headerlink" title="安装hadoop"></a>安装hadoop</h2><p>高可用 （HA）+ 负载均衡 = 多服务器镜像+请求平均分配</p>
+<p>官方下载：hadoop.apache.org</p>
+<p>官方文档：hadoop.apache.org/docs/r1.0.4/cn/mapred_tutorial.html</p>
+<p>安装方式：</p>
 <ol>
-<li>page指令可以指定jsp页面使用的脚本语言，导入类，设置jsp文件编码，浏览器解析jsp的编码</li>
-<li>include指令可以导入相应的jsp页面的内容到本页面汇总</li>
+<li>本地模式：用于测试，直接解压就能运行</li>
+<li>伪分布模式：用于开发，必须进行网络连接</li>
+<li>分布模式：用于生产</li>
 </ol>
-<h2 id="jsp的九大内置对象"><a href="#jsp的九大内置对象" class="headerlink" title="jsp的九大内置对象"></a>jsp的九大内置对象</h2><p>pageContext、request、session、application，config、response、out、exception、page</p>
-<h2 id="jsp的四大域对象"><a href="#jsp的四大域对象" class="headerlink" title="jsp的四大域对象"></a>jsp的四大域对象</h2><p>request：</p>
-<ol>
-<li><p>常用方法有getParameter，setCharacterEncoding()，getRequestDistpathcer().forward()，getServletContext9();</p>
+<h4 id="本地模式："><a href="#本地模式：" class="headerlink" title="本地模式："></a><strong>本地模式：</strong></h4><ol>
+<li>创建目录 <code>mkdir /hadoop</code></li>
+<li>解压文件 <code>tar xxxx -C xxx</code></li>
+<li>使用<code>share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.3.jar</code>进行指定文件单词统计测试</li>
+<li>命令： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.3.jar wordcount output</span><br><span class="line">/*</span><br><span class="line">1. hadoop下的bin目录下的hadoop jar 命令，作用是执行jar包</span><br><span class="line">2. wordcount 指定java文件</span><br><span class="line">3. output 输出</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>get与post请求方式的区别：get方式的请求在地址栏显示请求信息，一是不安全，二是长度有限制。</p>
-<p>但是post比get方式的请求慢，所以get一般用于排序和筛选</p>
+</ol>
+<h4 id="伪分布模式"><a href="#伪分布模式" class="headerlink" title="伪分布模式"></a><strong>伪分布模式</strong></h4><p>在本地模式安装的基础之上，进行操作</p>
+<ol>
+<li><p>配置环境环境变量(<code>/etc/profile</code>)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HOME = XXX</span><br><span class="line">export PATH = ....:$HADOOP_HOME/bin:$HADOOP_HOME/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使配置的环境变量生效：<code>source /etc/profile</code></p>
+</li>
+<li>修改主机名：<code>/etc/hosts</code></li>
+<li><p>修改hostname：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">方式一：</span><br><span class="line">echo hadoopmaster&gt;/etc/hostname</span><br><span class="line">hostname -F /etc/hostname</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置hadoop-env.sh的JDK目录(<code>.../etc/hadoop/hadoop-env.sh</code>)<br><code>JAVA_HOME = /usr/local/jdk/jdk1.8.0_171/</code></p>
 </li>
 </ol>
-<p>session：</p>
+<p>可选步骤：<br>在windows的hosts配置一下主机名对应ip地址，运行cmd命令查看一下是否能ping</p>
+<h4 id="分布模式"><a href="#分布模式" class="headerlink" title="分布模式"></a>分布模式</h4><p>在伪分布模式基础之上进行修改</p>
 <ol>
-<li>session与cookie的区别：cookie不是内置对象，是一个由客户端生成，再发送给客户端保存的对象。session存放于服务器上，而cookie保存于客户端本地。cookie只能保存字符串，而session保存object对象。</li>
-<li>session与cookie运行机制：第一次请求会产生sessionid，用于保存客户端信息，并且把sessionid赋值给jessionid保存到cookie中，一一对应。</li>
+<li>对于当作主mater的机器，在hostname中要添加其他主机的host映射</li>
+<li><p>将其他机器的密钥配置到主mater机器之上</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//1. 使用scp命令复制到主机器master上，master是主机名称</span><br><span class="line">`scp id_rsa.pub master@master:~/.ssh/id_rsa_1.pub`</span><br><span class="line">//2. 追加到主机的私钥上</span><br><span class="line">cat id_rsa_1.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置成功后，最后进行一次格式化操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`rm -r data`</span><br><span class="line">`rm -r sourcepackage`</span><br><span class="line">`hadoop namenode -format`</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>application：</p>
-<ol>
-<li>常用方法：getContextPath(),getRealPath()</li>
-</ol>
-<h1 id="三、servlet"><a href="#三、servlet" class="headerlink" title="三、servlet"></a>三、servlet</h1><p>servlet的生命周期：加载、初始化、服务，销毁、卸载</p>
 
       
     </div>
@@ -398,16 +399,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i>
- java</a>
-          
-            <a href="/tags/个人总结/" rel="tag"><i class="fa fa-tag"></i>
- 个人总结</a>
-          
-        </div>
-      
 
       
       
@@ -417,18 +408,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/16/面试题总结/" rel="next" title="面试题总结">
-                <i class="fa fa-chevron-left"></i> 面试题总结
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/28/ssm框架知识点总结/" rel="prev" title="ssm框架知识点总结">
-                ssm框架知识点总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/31/hadoop的安装/" rel="prev" title="hadoop的安装">
+                hadoop的安装 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -565,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、servlet的容器Tomcat"><span class="nav-number">1.</span> <span class="nav-text">一、servlet的容器Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat目录"><span class="nav-number">1.1.</span> <span class="nav-text">tomcat目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、jsp"><span class="nav-number">2.</span> <span class="nav-text">二、jsp</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本和指令"><span class="nav-number">2.1.</span> <span class="nav-text">脚本和指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp的九大内置对象"><span class="nav-number">2.2.</span> <span class="nav-text">jsp的九大内置对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp的四大域对象"><span class="nav-number">2.3.</span> <span class="nav-text">jsp的四大域对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、servlet"><span class="nav-number">3.</span> <span class="nav-text">三、servlet</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看网络连接是否正常"><span class="nav-number">1.</span> <span class="nav-text">查看网络连接是否正常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装SSH服务器通信软件"><span class="nav-number">2.</span> <span class="nav-text">安装SSH服务器通信软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#登陆root用户"><span class="nav-number">2.0.1.</span> <span class="nav-text">登陆root用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装ssh软件"><span class="nav-number">2.0.2.</span> <span class="nav-text">安装ssh软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置ssh使其允许远程连接"><span class="nav-number">2.0.3.</span> <span class="nav-text">配置ssh使其允许远程连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK"><span class="nav-number">3.</span> <span class="nav-text">安装JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加环境变量"><span class="nav-number">3.0.1.</span> <span class="nav-text">添加环境变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hadoop"><span class="nav-number">4.</span> <span class="nav-text">安装hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地模式："><span class="nav-number">4.0.1.</span> <span class="nav-text">本地模式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪分布模式"><span class="nav-number">4.0.2.</span> <span class="nav-text">伪分布模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布模式"><span class="nav-number">4.0.3.</span> <span class="nav-text">分布模式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
