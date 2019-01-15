@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="技术,框架,笔记," />
+  <meta name="keywords" content="框架,技术,笔记," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="mybatis介绍Mybatis是一个基于持久层的框架，提供自动映射，动态SQL，级联，缓存，注解，代码和SQL分离等特性 mybatis有四个核心组件：  SqlSessionFactoryBuilder(通过构建者模式，创建SqlSessionFactory) SqlSessionFactory(一般为单例，负责创建SqlSession) SqlSession(读取接口) SqlMapper(">
-<meta name="keywords" content="技术,框架,笔记">
+<meta name="keywords" content="框架,技术,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mybatis框架复习">
 <meta property="og:url" content="http://yoursite.com/2019/01/14/2019-1-14-mybatis框架复习/index.html">
 <meta property="og:site_name" content="写的更多，做的很少">
 <meta property="og:description" content="mybatis介绍Mybatis是一个基于持久层的框架，提供自动映射，动态SQL，级联，缓存，注解，代码和SQL分离等特性 mybatis有四个核心组件：  SqlSessionFactoryBuilder(通过构建者模式，创建SqlSessionFactory) SqlSessionFactory(一般为单例，负责创建SqlSession) SqlSession(读取接口) SqlMapper(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-14T13:55:08.720Z">
+<meta property="og:updated_time" content="2019-01-15T14:00:47.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mybatis框架复习">
 <meta name="twitter:description" content="mybatis介绍Mybatis是一个基于持久层的框架，提供自动映射，动态SQL，级联，缓存，注解，代码和SQL分离等特性 mybatis有四个核心组件：  SqlSessionFactoryBuilder(通过构建者模式，创建SqlSessionFactory) SqlSessionFactory(一般为单例，负责创建SqlSession) SqlSession(读取接口) SqlMapper(">
@@ -375,6 +375,20 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SqlSessionFactory sqlSessionFactory = <span class="keyword">null</span>;</span><br><span class="line">String resource = <span class="string">"mybatis-config.xml"</span>;</span><br><span class="line">InputStream inputStream;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    inputStream = Resources.getResourceAsStream(resource); <span class="comment">//通过流读取到基本配置文件</span></span><br><span class="line">    sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);<span class="comment">//创建SqlSessionFactory工厂</span></span><br><span class="line">    SqlSession sqlSession = sqlSessionFactory.openSession(); <span class="comment">//获得sqlSession连接</span></span><br><span class="line">    RoleMapper mapper = sqlSession.getMapper(RoleMapper.class);<span class="comment">//通过类对象获得mapper</span></span><br><span class="line">    mapper.getRole(<span class="number">1</span>)); <span class="comment">//执行相应方法</span></span><br><span class="line">&#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>封装使用sqlSession：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 封装获取SqlSession的方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/1/14 0014 - 15:31</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlSessionFactoryUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> Class&lt;SqlSessionFactoryUtil&gt; LOCK = SqlSessionFactoryUtil.class;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SqlSessionFactory sqlSessionFactory = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SqlSessionFactoryUtil</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/****</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 通过sqlsessionFactoryBuilder获得SqlsessionFactory</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> sqlSessionFactory</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SqlSessionFactory <span class="title">getSqlSessionFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (LOCK) &#123;</span><br><span class="line">            <span class="keyword">if</span>(sqlSessionFactory != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> sqlSessionFactory;</span><br><span class="line">            &#125;</span><br><span class="line">            String resource = <span class="string">"mybatis-config.xml"</span>;</span><br><span class="line">            InputStream inputStream;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">                inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">                sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> sqlSessionFactory;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/****</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 获得sqlsession会话</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> sqlsession</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SqlSession <span class="title">openSqlSession</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(sqlSessionFactory == <span class="keyword">null</span>) &#123;</span><br><span class="line">            getSqlSessionFactory();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> sqlSessionFactory.openSession();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="mybatis全局配置文件"><a href="#mybatis全局配置文件" class="headerlink" title="mybatis全局配置文件"></a>mybatis全局配置文件</h2><ol>
+<li><code>&lt;properties&gt;</code>，可以根据resource指向的配置文件，用<code>${}</code>引入外部属性配置。</li>
+<li><code>&lt;typeAliases&gt;</code>，在此标签下可以配置别名。用简单的名称，代替全类名</li>
+<li><code>&lt;envoronments&gt;</code>，配置数据库信息<ul>
+<li>在此标签下可以配置<code>&lt;transactionManager&gt;</code>事务管理器，JDBC或MANAGED</li>
+<li>配置数据源相关<code>&lt;dataSource&gt;</code>，有POOLED,UNPOOLED,JNDI。也可以实现DataSourceFactory接口引入自定义数据源。</li>
+</ul>
+</li>
+<li><code>&lt;databaseProvider&gt;</code>数据库厂商标识，在多数据库切换时，可以使用别名进行区分。<ul>
+<li>使用方式：<code>&lt;databaseProvider type=&quot;DB_VENDOR&quot;&gt;</code>设置别名，在映射器的标签中dataBaseId使用使用。</li>
+</ul>
+</li>
+<li><code>&lt;mappers&gt;</code>标签导入mapperXML文件。</li>
+</ol>
 
       
     </div>
@@ -392,11 +406,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术/" rel="tag"><i class="fa fa-tag"></i>
- 技术</a>
-          
             <a href="/tags/框架/" rel="tag"><i class="fa fa-tag"></i>
  框架</a>
+          
+            <a href="/tags/技术/" rel="tag"><i class="fa fa-tag"></i>
+ 技术</a>
           
             <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i>
  笔记</a>
@@ -556,7 +570,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis介绍"><span class="nav-number">1.</span> <span class="nav-text">mybatis介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis简单使用"><span class="nav-number">2.</span> <span class="nav-text">mybatis简单使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis介绍"><span class="nav-number">1.</span> <span class="nav-text">mybatis介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis简单使用"><span class="nav-number">2.</span> <span class="nav-text">mybatis简单使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis全局配置文件"><span class="nav-number">3.</span> <span class="nav-text">mybatis全局配置文件</span></a></li></ol></div>
             
 
           </div>
@@ -604,7 +618,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.5k字</span>
+  <span class="post-count">博客全站共10.7k字</span>
 </div>
         
 
