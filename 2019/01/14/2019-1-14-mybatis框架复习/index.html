@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="写的更多，做的很少">
 <meta property="og:description" content="mybatis介绍Mybatis是一个基于持久层的框架，提供自动映射，动态SQL，级联，缓存，注解，代码和SQL分离等特性 mybatis有四个核心组件：  SqlSessionFactoryBuilder(通过构建者模式，创建SqlSessionFactory) SqlSessionFactory(一般为单例，负责创建SqlSession) SqlSession(读取接口) SqlMapper(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-15T14:00:47.200Z">
+<meta property="og:updated_time" content="2019-01-23T11:18:16.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mybatis框架复习">
 <meta name="twitter:description" content="mybatis介绍Mybatis是一个基于持久层的框架，提供自动映射，动态SQL，级联，缓存，注解，代码和SQL分离等特性 mybatis有四个核心组件：  SqlSessionFactoryBuilder(通过构建者模式，创建SqlSessionFactory) SqlSessionFactory(一般为单例，负责创建SqlSession) SqlSession(读取接口) SqlMapper(">
@@ -389,6 +389,76 @@
 </li>
 <li><code>&lt;mappers&gt;</code>标签导入mapperXML文件。</li>
 </ol>
+<h2 id="mybatis映射器使用"><a href="#mybatis映射器使用" class="headerlink" title="mybatis映射器使用"></a>mybatis映射器使用</h2><h3 id="select元素"><a href="#select元素" class="headerlink" title="select元素"></a>select元素</h3><ol>
+<li><code>&lt;select&gt;</code>元素负责查询SQL语句的编写<ul>
+<li>id：是唯一标识</li>
+<li>paramterType：表示这条SQL接受的参数类型，别名/全限定名</li>
+<li>resultType：表示这条SQL返回的结果类型，别名/全限定名</li>
+</ul>
+</li>
+<li>多个参数进行传递：三种方式：Map，@param注解，JavaBean。<ul>
+<li>参数少推荐使用注解，参数多使用JavaBean。</li>
+</ul>
+</li>
+<li>使用resultMap映射结果集<ul>
+<li>id定义了唯一标志，type代表使用哪个类去映射。</li>
+</ul>
+</li>
+<li>分页参数RowBounds<ul>
+<li>支持分页，只需要给接口添加RowBounds参数即可，创建类时指定偏移量，显示条数。</li>
+</ul>
+</li>
+</ol>
+<h3 id="insert-updata-delete元素"><a href="#insert-updata-delete元素" class="headerlink" title="insert/updata/delete元素"></a>insert/updata/delete元素</h3><ol>
+<li>在执行一条insert语句之后，会返回一个整数表示其影响记录数。</li>
+<li>主键回填：拿到插入数据后的主键<ul>
+<li>useGeneratedKeys控制是否获取主键，keyProperty/keyColumn指定生成的主键。</li>
+</ul>
+</li>
+<li>自定义主键，自定义主键增加规则，<code>&lt;selectKey&gt;</code>标签<ul>
+<li>keyProperty采用哪个属性作为主键，resultType返回结果集，order指定将于定义的SQL之前或之后运行</li>
+</ul>
+</li>
+</ol>
+<h3 id="SQL元素"><a href="#SQL元素" class="headerlink" title="SQL元素"></a>SQL元素</h3><p>抽取常用的列名：</p>
+<ol>
+<li>使用<code>&lt;sql&gt;</code>标签，使用id指定唯一标识。</li>
+<li>在使用时，<code>&lt;include refid = &quot;&quot;&gt;</code>，引用标识。</li>
+</ol>
+<h3 id="resultMap元素"><a href="#resultMap元素" class="headerlink" title="resultMap元素"></a>resultMap元素</h3><p>定义sql到javaBean之间的关系。</p>
+<p>id配置主键，result配置其他列。</p>
+<p>属性property定义projo属性，column定义sql字段，两者对应。</p>
+<p>可以使用<code>&lt;constructor&gt;</code>配置POJO对象。</p>
+<h3 id="级联"><a href="#级联" class="headerlink" title="级联"></a>级联</h3><p>级联：例如角色需要存在用户与之对应，一个角色可能有多个用户，这就是一对多级联。</p>
+<p>级联的分类：</p>
+<ol>
+<li>鉴别器：<code>&lt;discriminator&gt;</code>，类似与switch case的用法</li>
+<li>一对一：<code>&lt;association&gt;</code></li>
+<li>一对多：<code>&lt;collection&gt;</code></li>
+<li>property代表映射的pojo属性；column代表SQL的列，用作传递给select属性的参数；select是命名空间+SQL id的形式。</li>
+</ol>
+<h3 id="N-1问题"><a href="#N-1问题" class="headerlink" title="N+1问题"></a>N+1问题</h3><p>N+1：假设现在有N个关联完成了级联，那么只要在加入一个关联关系，就编程了N+1级联，所有的级联SQL都会被执行，会造成很大的资源浪费，这就是N+1问题。</p>
+<p>为了应对这类问题，提供了<strong>延迟加载</strong>功能</p>
+<ul>
+<li>在setting中，lazyLoadingEnabled延迟加载的全局开关，aggeressiveLazyLoading开启层级加载，关闭则是按需加载。</li>
+<li>fetchType属性，使用它可覆盖全局配置，在mapper中的元素里使用。值eager代表获得当前pojo立即加载对应的数据，lazy获得当前pojo后延迟加载对应的数据。</li>
+</ul>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>mybatis有一级缓存和二级缓存之分，一级缓存属于session级别，二级缓存属于SqlSessionFactory级别。一级缓存默认使用，开启二级缓存的方法：在mapper文件中使用<code>&lt;cache/&gt;</code>即可。</p>
+<p>自定义缓存：</p>
+<ul>
+<li>mybatis支持自定义缓存，要求缓存类实现接口<code>org.apache.ibatis.cache.Cache</code></li>
+<li>在<code>&lt;cache&gt;</code>标签中，使用type指定缓存类的全类名。</li>
+<li>还可以自定义是否进行缓存，属性：flushCache代表是否刷新缓存，useCache是select特有的，代表是否需要使用缓存。</li>
+<li>对于其他mapper文件使用自定义缓存，还可以使用<code>&lt;cache-ref&gt;</code>来指定。</li>
+</ul>
+<h2 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h2><h3 id="IF元素"><a href="#IF元素" class="headerlink" title="IF元素"></a>IF元素</h3><p>一般常与test属性搭配使用，根据条件是否构建包含的SQL语句。</p>
+<h3 id="choose、when、otherwise元素"><a href="#choose、when、otherwise元素" class="headerlink" title="choose、when、otherwise元素"></a>choose、when、otherwise元素</h3><p>这三者之间的功能类似与：swich…case…default…</p>
+<h3 id="trim、where、set元素"><a href="#trim、where、set元素" class="headerlink" title="trim、where、set元素"></a>trim、where、set元素</h3><p>where可以把语句中多余的and去除，进行条件的拼接</p>
+<p>trim要去除包含SQL中的一些特殊的字符串，prefix代表语句的前缀，prefixOverrides去除多余的前缀。suffixOverrides去除多余的后缀。</p>
+<p>set可以在update元素代替set关键字，同时也会去除多余的逗号。</p>
+<h3 id="foreach元素"><a href="#foreach元素" class="headerlink" title="foreach元素"></a>foreach元素</h3><p>用于遍历一个传过来的集合参数。一般不用</p>
+<h3 id="bind元素"><a href="#bind元素" class="headerlink" title="bind元素"></a>bind元素</h3><p>通过OGNL表达式去自定义一个上下文的变量，自定义字符串拼接，属性name定义标识，value定义值。</p>
+<p><code>&lt;bind name=&quot;pattern&quot; value=&quot;&#39;%&#39; + _parameter + &#39;%&#39;&quot;</code></p>
 
       
     </div>
@@ -570,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis介绍"><span class="nav-number">1.</span> <span class="nav-text">mybatis介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis简单使用"><span class="nav-number">2.</span> <span class="nav-text">mybatis简单使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis全局配置文件"><span class="nav-number">3.</span> <span class="nav-text">mybatis全局配置文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis介绍"><span class="nav-number">1.</span> <span class="nav-text">mybatis介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis简单使用"><span class="nav-number">2.</span> <span class="nav-text">mybatis简单使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis全局配置文件"><span class="nav-number">3.</span> <span class="nav-text">mybatis全局配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis映射器使用"><span class="nav-number">4.</span> <span class="nav-text">mybatis映射器使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select元素"><span class="nav-number">4.1.</span> <span class="nav-text">select元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-updata-delete元素"><span class="nav-number">4.2.</span> <span class="nav-text">insert/updata/delete元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL元素"><span class="nav-number">4.3.</span> <span class="nav-text">SQL元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resultMap元素"><span class="nav-number">4.4.</span> <span class="nav-text">resultMap元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#级联"><span class="nav-number">4.5.</span> <span class="nav-text">级联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N-1问题"><span class="nav-number">4.6.</span> <span class="nav-text">N+1问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">4.7.</span> <span class="nav-text">缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态SQL"><span class="nav-number">5.</span> <span class="nav-text">动态SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IF元素"><span class="nav-number">5.1.</span> <span class="nav-text">IF元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choose、when、otherwise元素"><span class="nav-number">5.2.</span> <span class="nav-text">choose、when、otherwise元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trim、where、set元素"><span class="nav-number">5.3.</span> <span class="nav-text">trim、where、set元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#foreach元素"><span class="nav-number">5.4.</span> <span class="nav-text">foreach元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bind元素"><span class="nav-number">5.5.</span> <span class="nav-text">bind元素</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -618,7 +688,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.7k字</span>
+  <span class="post-count">博客全站共11.7k字</span>
 </div>
         
 
