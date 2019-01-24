@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="框架,技术,笔记," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
+<meta name="description" content="SpringIoC控制反转IoC概念控制反转：是一种通过描述并通过第三方去产生或获取特定对象的方式，由主动去创建对象，改为需要时去被动获取对象，不会关注对象是如何产生，只要在需要的时刻能够获取到这个对象。 IoC容器主要基于两个接口：BeanFactory和ApplicationContext BeanFactory接口设计的方法：  getBean()，使用多种方式去获取容器中的Bean isS">
+<meta name="keywords" content="框架,技术,笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hadoop下的mapreduce和hdfs的安装">
-<meta property="og:url" content="http://yoursite.com/2018/04/20/2018-5-31-hadoop下的mapreduce和hdfs的安装/index.html">
+<meta property="og:title" content="spring框架复习">
+<meta property="og:url" content="http://yoursite.com/2019/01/24/2019-1-24-spring框架复习总结/index.html">
 <meta property="og:site_name" content="写的更多，做的很少">
-<meta property="og:description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
+<meta property="og:description" content="SpringIoC控制反转IoC概念控制反转：是一种通过描述并通过第三方去产生或获取特定对象的方式，由主动去创建对象，改为需要时去被动获取对象，不会关注对象是如何产生，只要在需要的时刻能够获取到这个对象。 IoC容器主要基于两个接口：BeanFactory和ApplicationContext BeanFactory接口设计的方法：  getBean()，使用多种方式去获取容器中的Bean isS">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-31T02:23:39.204Z">
+<meta property="og:updated_time" content="2019-01-24T02:50:35.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hadoop下的mapreduce和hdfs的安装">
-<meta name="twitter:description" content="分布式文件系统HDFS：HDFS是GFS的克隆版    特点：多副本，容错性。 资源调度系统YARN：负责整个集群资源的管理和调度 分布式计算框架MapReduce 查看网络连接是否正常使用 ping 测试网络连接是否通常 如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。 否则请给机器设置静态IP： etc/network/interfaces 安装SSH服务器通信软件登陆root">
+<meta name="twitter:title" content="spring框架复习">
+<meta name="twitter:description" content="SpringIoC控制反转IoC概念控制反转：是一种通过描述并通过第三方去产生或获取特定对象的方式，由主动去创建对象，改为需要时去被动获取对象，不会关注对象是如何产生，只要在需要的时刻能够获取到这个对象。 IoC容器主要基于两个接口：BeanFactory和ApplicationContext BeanFactory接口设计的方法：  getBean()，使用多种方式去获取容器中的Bean isS">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/20/2018-5-31-hadoop下的mapreduce和hdfs的安装/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/24/2019-1-24-spring框架复习总结/"/>
 
 
 
 
 
-  <title>hadoop下的mapreduce和hdfs的安装 | 写的更多，做的很少</title>
+  <title>spring框架复习 | 写的更多，做的很少</title>
   
 
 
@@ -254,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/2018-5-31-hadoop下的mapreduce和hdfs的安装/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/2019-1-24-spring框架复习总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dasorb">
@@ -271,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hadoop下的mapreduce和hdfs的安装</h1>
+          <h1 class="post-title" itemprop="name headline">spring框架复习</h1>
         
 
         <div class="post-meta">
@@ -283,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T20:58:54+08:00">
-                2018-04-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T10:49:46+08:00">
+                2019-01-24
               </time>
             
 
@@ -293,6 +294,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/框架学习/" itemprop="url" rel="index">
+                    <span itemprop="name">框架学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -321,69 +344,111 @@
       
 
       
-        <p>分布式文件系统HDFS：HDFS是GFS的克隆版<br>    特点：多副本，容错性。</p>
-<p>资源调度系统YARN：负责整个集群资源的管理和调度</p>
-<p>分布式计算框架MapReduce</p>
-<h2 id="查看网络连接是否正常"><a href="#查看网络连接是否正常" class="headerlink" title="查看网络连接是否正常"></a>查看网络连接是否正常</h2><p>使用 ping 测试网络连接是否通常</p>
-<p>如果没有网络IP，请检查虚拟机网络编辑器NAT设置是否分配IP。</p>
-<p>否则请给机器设置静态IP：</p>
-<p>etc/network/interfaces</p>
-<h2 id="安装SSH服务器通信软件"><a href="#安装SSH服务器通信软件" class="headerlink" title="安装SSH服务器通信软件"></a>安装SSH服务器通信软件</h2><h4 id="登陆root用户"><a href="#登陆root用户" class="headerlink" title="登陆root用户"></a>登陆root用户</h4><p>设置root用户密码 sudo passwd root<br>启动root用户 su root</p>
-<h4 id="安装ssh软件"><a href="#安装ssh软件" class="headerlink" title="安装ssh软件"></a>安装ssh软件</h4><p>安装命令 apt-get install openssh-server</p>
-<p>启动服务 service ssh start</p>
-<p>查看进程 ps -e |grep ssh</p>
-<h4 id="配置ssh使其允许远程连接"><a href="#配置ssh使其允许远程连接" class="headerlink" title="配置ssh使其允许远程连接"></a>配置ssh使其允许远程连接</h4><p>打开文件：<code>/etc/ssh/sshd_config</code><br>修改代码：<code>PermitRootLogin yes</code><br>重启ssh服务：<code>service ssh restart</code></p>
-<p>使用putty.exe程序在windows上打开session会话输入地址远程打开LINUX终端</p>
-<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p>因为hadoop是java编写的所以需要java开发环境的支持，才能运行</p>
+        <h2 id="SpringIoC控制反转"><a href="#SpringIoC控制反转" class="headerlink" title="SpringIoC控制反转"></a>SpringIoC控制反转</h2><h3 id="IoC概念"><a href="#IoC概念" class="headerlink" title="IoC概念"></a>IoC概念</h3><p>控制反转：是一种通过描述并通过第三方去产生或获取特定对象的方式，由主动去创建对象，改为需要时去被动获取对象，不会关注对象是如何产生，只要在需要的时刻能够获取到这个对象。</p>
+<p>IoC容器主要基于两个接口：BeanFactory和ApplicationContext</p>
+<p>BeanFactory接口设计的方法：</p>
+<ul>
+<li>getBean()，使用多种方式去获取容器中的Bean</li>
+<li>isSingleton()，判断是否是单例，isPrototype()判断相反</li>
+<li>getAliases()，获取bean的别名</li>
+</ul>
+<h3 id="容器初始化步骤"><a href="#容器初始化步骤" class="headerlink" title="容器初始化步骤"></a>容器初始化步骤</h3><p>Bean的初始化分为3步：</p>
 <ol>
-<li>创建目录：<code>/usr/local/jdk</code></li>
-<li>下载文件：(选用)<code>wget 下载地址</code></li>
-<li>解压文件到目录：<code>tar -xvzf ... -C ...</code></li>
+<li>Resource根据配置进行定位</li>
+<li>BeanDefinition的载入，根据配置获取对应POJO，以生成实例的过程</li>
+<li>BeanDefinition的注册，将上步载入的POJO，往IoC容器中注册。</li>
 </ol>
-<h4 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h4><p>在<code>/etc/profile</code>中添加代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk/jdk1.8.0_171</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure></p>
-<p>生效环境变量：<code>source /etc/profile</code></p>
-<p>测试安装成功：<code>java -version</code></p>
-<p>wincp.exe用于上传文件到Linux虚拟机</p>
-<h2 id="安装hadoop"><a href="#安装hadoop" class="headerlink" title="安装hadoop"></a>安装hadoop</h2><p>高可用 （HA）+ 负载均衡 = 多服务器镜像+请求平均分配</p>
-<p>官方下载：hadoop.apache.org</p>
-<p>官方文档：hadoop.apache.org/docs/r1.0.4/cn/mapred_tutorial.html</p>
-<p>安装方式：</p>
+<p>执行上述3步之后，未完成对象的依赖注入，通过lazy-init属性来控制对象是否自动初始化，，默认false，true，只有获取这个Bean时，才执行初始化。</p>
+<h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><p>程序启动时（如果实现了接口）：</p>
+<ul>
+<li><p>BeanNameAware接口的<code>setBeanName()</code></p>
+</li>
+<li><p>BeanFactoryAware接口的<code>setBeanFactory()</code></p>
+</li>
+<li><p>ApplicationContextAware接口的<code>setApplicationContext()</code>，并且spring容器是一个ApplicationContext接口的实现类。</p>
+</li>
+<li><p>BeanPostProcessor的<code>postProcessBeforeInitialization()</code>  <strong>bean开始初始化执行，针对所有bean</strong></p>
+</li>
+<li><p>BeanFactoryPostProcessor接口的<code>afterPropertiesSet ()</code></p>
+</li>
+<li><p>Bean自定义初始化方法，<code>init</code>自定义初始化方法</p>
+</li>
+<li><p>BeanPostProcessor接口的<code>postProcessAfterInitialization()</code> <strong>bean初始化并依赖注入完成之后，针对所有bean</strong></p>
+</li>
+</ul>
+<p>容器关闭时：</p>
+<ul>
+<li><p>DisposableBean接口的<code>detory()</code>  <strong>针对IoC容器的销毁方法</strong></p>
+</li>
+<li><p>Bean自定义销毁方法 destroy()自定义销毁方法</p>
+</li>
+</ul>
+<p>注意：</p>
 <ol>
-<li>本地模式：用于测试，直接解压就能运行</li>
-<li>伪分布模式：用于开发，必须进行网络连接</li>
-<li>分布模式：用于生产</li>
+<li>当一个Bean实现了上述的接口，我们只要在容器中定义它们就可以了。</li>
+<li>一个bean的自定义初始化、销毁方法，使用init-method和destroy-method属性去指定。</li>
 </ol>
-<h4 id="本地模式："><a href="#本地模式：" class="headerlink" title="本地模式："></a><strong>本地模式：</strong></h4><ol>
-<li>创建目录 <code>mkdir /hadoop</code></li>
-<li>解压文件 <code>tar xxxx -C xxx</code></li>
-<li>使用<code>share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.3.jar</code>进行指定文件单词统计测试</li>
-<li>命令： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.3.jar wordcount output</span><br><span class="line">/*</span><br><span class="line">1. hadoop下的bin目录下的hadoop jar 命令，作用是执行jar包</span><br><span class="line">2. wordcount 指定java文件</span><br><span class="line">3. output 输出</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="伪分布模式"><a href="#伪分布模式" class="headerlink" title="伪分布模式"></a><strong>伪分布模式</strong></h4><p>在本地模式安装的基础之上，进行操作</p>
+<h2 id="Bean的依赖注入"><a href="#Bean的依赖注入" class="headerlink" title="Bean的依赖注入"></a>Bean的依赖注入</h2><p>依赖注入可分3种方式：</p>
 <ol>
-<li><p>配置环境环境变量(<code>/etc/profile</code>)</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HOME = XXX</span><br><span class="line">export PATH = ....:$HADOOP_HOME/bin:$HADOOP_HOME/bin</span><br></pre></td></tr></table></figure>
+<li>构造器注入<ul>
+<li>在bean标签中使用<code>&lt;constructor-arg&gt;</code>标签，index代表参数顺序，value代表值。</li>
+</ul>
 </li>
-<li><p>使配置的环境变量生效：<code>source /etc/profile</code></p>
-</li>
-<li>修改主机名：<code>/etc/hosts</code></li>
-<li><p>修改hostname：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">方式一：</span><br><span class="line">echo hadoopmaster&gt;/etc/hostname</span><br><span class="line">hostname -F /etc/hostname</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置hadoop-env.sh的JDK目录(<code>.../etc/hadoop/hadoop-env.sh</code>)<br><code>JAVA_HOME = /usr/local/jdk/jdk1.8.0_171/</code></p>
-</li>
+<li>setter注入</li>
+<li>接口注入</li>
 </ol>
-<p>可选步骤：<br>在windows的hosts配置一下主机名对应ip地址，运行cmd命令查看一下是否能ping</p>
-<h4 id="分布模式"><a href="#分布模式" class="headerlink" title="分布模式"></a>分布模式</h4><p>在伪分布模式基础之上进行修改</p>
+<p>装配Bean的方式：</p>
 <ol>
-<li>对于当作主mater的机器，在hostname中要添加其他主机的host映射</li>
-<li><p>将其他机器的密钥配置到主mater机器之上</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//1. 使用scp命令复制到主机器master上，master是主机名称</span><br><span class="line">`scp id_rsa.pub master@master:~/.ssh/id_rsa_1.pub`</span><br><span class="line">//2. 追加到主机的私钥上</span><br><span class="line">cat id_rsa_1.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置成功后，最后进行一次格式化操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`rm -r data`</span><br><span class="line">`rm -r sourcepackage`</span><br><span class="line">`hadoop namenode -format`</span><br></pre></td></tr></table></figure></li>
+<li>在xml中显示配置</li>
+<li>在java的接口和类中实现配置</li>
+<li>隐式bean的发现机制和自动装配原则</li>
 </ol>
+<h3 id="通过XML进行配置"><a href="#通过XML进行配置" class="headerlink" title="通过XML进行配置"></a>通过XML进行配置</h3><p>装配简单值：</p>
+<ul>
+<li>id属性代表这个bean在容器中的唯一编号</li>
+<li>class指定类全限定名</li>
+<li><code>&lt;property&gt;</code>便签定义类的属性</li>
+</ul>
+<p>装配集合：</p>
+<ul>
+<li>list，在property中使用<code>&lt;list&gt;&lt;value&gt;&lt;/value&gt;&lt;/list&gt;</code>标签。<strong>使用<code>&lt;ref/&gt;</code>来引入对象</strong></li>
+<li>map，在property中使用<code>&lt;map&gt;&lt;entry key=&quot;&quot; value=&quot;&quot;/&gt;&lt;/map&gt;</code>标签，<strong>使用<code>value-ref=&quot;&quot;</code>属性来引入对象</strong></li>
+<li>properties,在property中使用<code>&lt;props&gt;&lt;prop key=&quot;&quot;&gt;value&lt;/prop&gt;&lt;/props&gt;</code>标签</li>
+<li>set，在property中使用<code>&lt;set&gt;&lt;value&gt;&lt;/value&gt;&lt;/set&gt;</code>标签</li>
+<li>array，在property中使用<code>&lt;array&gt;&lt;value&gt;&lt;/value&gt;&lt;/array&gt;</code>标签</li>
+</ul>
+<h3 id="通过注解来装配"><a href="#通过注解来装配" class="headerlink" title="通过注解来装配"></a>通过注解来装配</h3><p>通过两种方式来让springIoC来发现Bean：组件扫描，自动装配</p>
+<p><code>@Component</code>装配Bean</p>
+<ul>
+<li>括号内默认写id名称，不写则默认类名首字母小写为id。</li>
+<li><code>@value</code>,代表值的注入</li>
+</ul>
+<p>组件扫描：</p>
+<ul>
+<li>使用<code>@ComponentScan</code>修饰一个类，默认扫描这个类所在包和子包下的所有注解标识的Bean</li>
+<li>配合 AnnotationApplicationContext实现类，进行扫描。</li>
+<li>配置项basePackages，可以加载多个java包，即数组。配置项basePackageClasses，可以配置多个类的全限定名数组。</li>
+<li><strong>也可以通过<code>&lt;context:component-scan base-package=&#39;com...&#39;/&gt;</code>xml配置进行组件扫描</strong></li>
+</ul>
+<p>自动装配：</p>
+<ul>
+<li><code>@Autowired</code>，配置项required，默认为ture；为false代表自动注入失败时，不抛出异常，该属性不必要，有空指针危险。</li>
+<li>对于相同的接口，有多个实现类，加载时为了消除歧义性，有两种方式解决：<ul>
+<li>在实现类上使用<code>@Primary</code>告诉容器，优先自动装配该类。</li>
+<li>配合<code>@Autowired</code>，使用<code>@Qualifier()</code>告诉容器按名称自动装配。</li>
+</ul>
+</li>
+</ul>
+<p><code>@Bean</code>作用于方法：</p>
+<ul>
+<li>对于第三方类，将<code>@Bean</code>注解作用于方法，将方法的返回对象自动装配到容器中。</li>
+<li>配置项：name，配置BeanName；autowire，是否引用一个Bean对象；initMethod，自定义初始化方法；detoryMethod，自定义销毁方法。</li>
+</ul>
+<h3 id="配置的引用"><a href="#配置的引用" class="headerlink" title="配置的引用"></a>配置的引用</h3><p>一个配置类的中的配置过于复杂，spring提供<code>@import</code>加载其他配置类。</p>
+<p>同样的在xml中：</p>
+<ul>
+<li>可以通过一个配置文件引用其他配置文件：<code>&lt;import resource=&quot;xxx.xml&quot;&gt;</code></li>
+</ul>
 
       
     </div>
@@ -399,6 +464,19 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/框架/" rel="tag"><i class="fa fa-tag"></i>
+ 框架</a>
+          
+            <a href="/tags/技术/" rel="tag"><i class="fa fa-tag"></i>
+ 技术</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i>
+ 笔记</a>
+          
+        </div>
+      
 
       
       
@@ -408,15 +486,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/01/14/2019-1-14-mybatis框架复习/" rel="next" title="mybatis框架复习">
+                <i class="fa fa-chevron-left"></i> mybatis框架复习
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/31/2018-5-31-hadoop的安装/" rel="prev" title="hadoop的安装">
-                hadoop的安装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -552,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看网络连接是否正常"><span class="nav-number">1.</span> <span class="nav-text">查看网络连接是否正常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装SSH服务器通信软件"><span class="nav-number">2.</span> <span class="nav-text">安装SSH服务器通信软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#登陆root用户"><span class="nav-number">2.0.1.</span> <span class="nav-text">登陆root用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装ssh软件"><span class="nav-number">2.0.2.</span> <span class="nav-text">安装ssh软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置ssh使其允许远程连接"><span class="nav-number">2.0.3.</span> <span class="nav-text">配置ssh使其允许远程连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK"><span class="nav-number">3.</span> <span class="nav-text">安装JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加环境变量"><span class="nav-number">3.0.1.</span> <span class="nav-text">添加环境变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hadoop"><span class="nav-number">4.</span> <span class="nav-text">安装hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地模式："><span class="nav-number">4.0.1.</span> <span class="nav-text">本地模式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪分布模式"><span class="nav-number">4.0.2.</span> <span class="nav-text">伪分布模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布模式"><span class="nav-number">4.0.3.</span> <span class="nav-text">分布模式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringIoC控制反转"><span class="nav-number">1.</span> <span class="nav-text">SpringIoC控制反转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IoC概念"><span class="nav-number">1.1.</span> <span class="nav-text">IoC概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器初始化步骤"><span class="nav-number">1.2.</span> <span class="nav-text">容器初始化步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean的生命周期"><span class="nav-number">1.3.</span> <span class="nav-text">Bean的生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的依赖注入"><span class="nav-number">2.</span> <span class="nav-text">Bean的依赖注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过XML进行配置"><span class="nav-number">2.1.</span> <span class="nav-text">通过XML进行配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过注解来装配"><span class="nav-number">2.2.</span> <span class="nav-text">通过注解来装配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置的引用"><span class="nav-number">2.3.</span> <span class="nav-text">配置的引用</span></a></li></ol></li></ol></div>
             
 
           </div>
