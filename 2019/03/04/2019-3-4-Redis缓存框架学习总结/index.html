@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="技术,框架,笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Redis缓存框架学习总结1. Redis概述数据库持久化数据主要是面向磁盘，磁盘IO读写比较慢，不适合瞬间读写大量数据，为了克服这些问题，引入了NOSQL技术，它是一种基于内存的数据库，并提供了一定的持久化功能。 Redis性能优越主要来自于3个方面：  基于ANSI C语言编写，运行十分快速 基于内存的读写，相比于磁盘读写快得多 数据库结构只有6种数据类型，数据结构简单  Redis存储应用考">
+<meta name="keywords" content="技术,框架,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis缓存框架复习">
+<meta property="og:url" content="http://yoursite.com/2019/03/04/2019-3-4-Redis缓存框架学习总结/index.html">
+<meta property="og:site_name" content="即将载入中。。。">
+<meta property="og:description" content="Redis缓存框架学习总结1. Redis概述数据库持久化数据主要是面向磁盘，磁盘IO读写比较慢，不适合瞬间读写大量数据，为了克服这些问题，引入了NOSQL技术，它是一种基于内存的数据库，并提供了一定的持久化功能。 Redis性能优越主要来自于3个方面：  基于ANSI C语言编写，运行十分快速 基于内存的读写，相比于磁盘读写快得多 数据库结构只有6种数据类型，数据结构简单  Redis存储应用考">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-04T03:12:48.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis缓存框架复习">
+<meta name="twitter:description" content="Redis缓存框架学习总结1. Redis概述数据库持久化数据主要是面向磁盘，磁盘IO读写比较慢，不适合瞬间读写大量数据，为了克服这些问题，引入了NOSQL技术，它是一种基于内存的数据库，并提供了一定的持久化功能。 Redis性能优越主要来自于3个方面：  基于ANSI C语言编写，运行十分快速 基于内存的读写，相比于磁盘读写快得多 数据库结构只有6种数据类型，数据结构简单  Redis存储应用考">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/04/2019-3-4-Redis缓存框架学习总结/"/>
+
+
+
+
+
+  <title>Redis缓存框架复习 | 即将载入中。。。</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+      <a href="https://github.com/dasorb"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">即将载入中。。。</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/04/2019-3-4-Redis缓存框架学习总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dasorb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="即将载入中。。。">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis缓存框架复习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-04T11:11:14+08:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/框架学习/" itemprop="url" rel="index">
+                    <span itemprop="name">框架学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Redis缓存框架学习总结"><a href="#Redis缓存框架学习总结" class="headerlink" title="Redis缓存框架学习总结"></a>Redis缓存框架学习总结</h1><h2 id="1-Redis概述"><a href="#1-Redis概述" class="headerlink" title="1. Redis概述"></a>1. Redis概述</h2><p>数据库持久化数据主要是面向磁盘，磁盘IO读写比较慢，不适合瞬间读写大量数据，为了克服这些问题，引入了NOSQL技术，它是一种基于内存的数据库，并提供了一定的持久化功能。</p>
+<p>Redis性能优越主要来自于3个方面：</p>
+<ol>
+<li>基于ANSI C语言编写，运行十分快速</li>
+<li>基于内存的读写，相比于磁盘读写快得多</li>
+<li>数据库结构只有6种数据类型，数据结构简单</li>
+</ol>
+<p>Redis存储应用考虑：</p>
+<ol>
+<li>读写频率</li>
+<li>缓存数据大小</li>
+<li>业务数据是否常用</li>
+</ol>
+<p>高速读写场合：</p>
+<p>一个请求达到服务器，只是把业务数据先在Redis读写，而没有进行任何对数据库的操作，最后去判断高速读写业务是否结束，如何成立就会操作数据库，将Redis缓存的数据以批量的形式一次性写入数据库。<br>举个列子就是，商品秒杀时，一个用户抢购商品，是在操作内存数据库，只有在商品抢购一空后才会触发系统把Redis缓存的数据写入数据库磁盘中。</p>
+<h2 id="2-Reids的基本安装和使用"><a href="#2-Reids的基本安装和使用" class="headerlink" title="2. Reids的基本安装和使用"></a>2. Reids的基本安装和使用</h2><p>Linux下安装注意事项(下载和解压步骤省略)：</p>
+<ol>
+<li>进入解压目录执行make命令进行安装</li>
+<li>redis服务端启动(redis-server)，客户端启动(redis-cli)<h3 id="JAVA-API："><a href="#JAVA-API：" class="headerlink" title="JAVA API："></a>JAVA API：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJedis</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Jedis jedis = <span class="keyword">new</span> Jedis(<span class="string">"localhost"</span>,<span class="number">6379</span>); <span class="comment">//创建jedis连接</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">//记录操作次数</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis(); <span class="comment">//开始毫秒数</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">long</span> end  = System.currentTimeMillis();</span><br><span class="line">            <span class="keyword">if</span>(end - start &gt;= <span class="number">1000</span>) &#123;</span><br><span class="line">                <span class="comment">//大于1秒时，结束操作</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">            jedis.set(<span class="string">"test"</span> + i, i+<span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        jedis.close();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="string">"redis 每秒操作："</span> + i + <span class="string">"次"</span>);<span class="comment">//打印1秒对Redis操作的次数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*** </span></span><br><span class="line"><span class="comment">* 使用连接池</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPoolJedis</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JedisPoolConfig poolConfig = <span class="keyword">new</span> JedisPoolConfig();</span><br><span class="line">    <span class="comment">//最大空闲数</span></span><br><span class="line">    poolConfig.setMaxIdle(<span class="number">50</span>);</span><br><span class="line">    <span class="comment">//最大连接数</span></span><br><span class="line">    poolConfig.setMaxTotal(<span class="number">100</span>);</span><br><span class="line">    <span class="comment">//最大等待毫秒数</span></span><br><span class="line">    poolConfig.setMaxWaitMillis(<span class="number">20000</span>);</span><br><span class="line">    <span class="comment">//使用配置创建连接池</span></span><br><span class="line">    JedisPool pool = <span class="keyword">new</span> JedisPool(poolConfig, <span class="string">"localhost"</span>);</span><br><span class="line">    <span class="comment">//从连接池中获取连接</span></span><br><span class="line">    Jedis jedis = pool.getResource();</span><br><span class="line">    <span class="comment">//如果需要密码</span></span><br><span class="line">    <span class="comment">//jedis.auth(password);</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注：远程连接redis服务器时，redis默认保护模式protected-mode，应该将其设置为no，或者在启动时增加参数：–protected mode no.</p>
+<h3 id="Spring-API"><a href="#Spring-API" class="headerlink" title="Spring API:"></a>Spring API:</h3><p>使用前需要提供jedis.jar和spring-data-redis.jar。</p>
+<p>配置步骤：</p>
+<ol>
+<li>在配置连接池之前，我们要将JedisPoolConfig对象配置到容器中。</li>
+<li>在使用RedisTemplate之前需要配置Spring提供的连接工厂，SpringDataRedis提供了4种工厂模型：<ol>
+<li>redisConnectionFactory</li>
+<li>JedisConnnectionFactory</li>
+<li>LettuceConnnectionFactory</li>
+<li>SpringConnectionFactory</li>
+</ol>
+</li>
+<li>配置工厂实现类，要设置hostname，端口号，连接池配置等。</li>
+<li>配置RedisTemplate，指定工厂，键序列器，值序列器。</li>
+<li>Spring提供了一些关于序列化的封装方案，也可以去实现RedisSerializer接口自定义序列化器，通过设置keySerializer，valueSerializer设置序列化器。</li>
+<li>在Spring中如何保证每次操作值，都是使用同一连接池的同一连接进行操作，可以使用SessionCallback或者RedisCallback操作。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">填写代码</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-Redis数据结构常用命令"><a href="#3-Redis数据结构常用命令" class="headerlink" title="3. Redis数据结构常用命令"></a>3. Redis数据结构常用命令</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th>数据存储的值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">String</td>
+<td>可以保存字符串，整数和浮点数</td>
+<td>可以对字符串进行操作，比如增加字符或者求子串，如果整数或者浮点数，可以实现计算</td>
+</tr>
+<tr>
+<td style="text-align:center">List</td>
+<td>它是一个链表，它的每一个节点都包含一个字符串</td>
+<td>Redis支持从链表的两端插入或弹出节点，或者通过偏移对它进行裁剪；还可以读取一个或者多个节点，根据条件删除或者查找节点等。</td>
+</tr>
+<tr>
+<td style="text-align:center">Set</td>
+<td>它是一个收集器，但是是无序的，在它里面每一个元素都是一个字符串，而且是独一无二，各不相同的。</td>
+<td>可以新增、读取、删除单个元素；检测一个元素是否在集合中：计算它和其他集合的交集、并集和差集等</td>
+</tr>
+<tr>
+<td style="text-align:center">Hash</td>
+<td>它类似于JAVA语言中的MAP，是一个键值对应的无序列表</td>
+<td>可以增、删、查、改单个键值对，也可以获取所有的键值对</td>
+</tr>
+<tr>
+<td style="text-align:center">Zset</td>
+<td>它是一个有序的集合，可以包含字符串、整数、浮点、分值(score)，元素的排序是依据分值的大小来决定</td>
+<td>可以增、删、查、改元素，根据分值的范围或者成员来获取对应的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">Hyperloglog</td>
+<td>它的作用是计算重复的值，以确定存储的数量</td>
+<td>只提供基数运算，不提供返回的功能</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set key value</td>
+<td>设置键值对</td>
+<td>最常用的写入命令</td>
+</tr>
+<tr>
+<td>get key</td>
+<td>通过键获取值</td>
+<td>读取命令</td>
+</tr>
+<tr>
+<td>del key</td>
+<td>删除</td>
+<td>通用命令</td>
+</tr>
+<tr>
+<td>strlen key</td>
+<td>求长度</td>
+<td></td>
+</tr>
+<tr>
+<td>getset key value</td>
+<td>修改原来key的值，将旧值返回</td>
+<td></td>
+</tr>
+<tr>
+<td>getrange key start end</td>
+<td>获取子串</td>
+<td>redis从0开始计数，0~len-1</td>
+</tr>
+<tr>
+<td>append key value</td>
+<td>追加字符串</td>
+<td>返回新字符串的长度</td>
+</tr>
+</tbody>
+</table>
+<p>SpringApi：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);</span><br><span class="line">RedisTemplate redisTemplate = applicationContext.getBean(RedisTemplate.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设定value</span></span><br><span class="line">redisTemplate.opsForValue().set(<span class="string">"key1"</span>, <span class="string">"value1"</span>);</span><br><span class="line">redisTemplate.opsForValue().set(<span class="string">"key2"</span>, <span class="string">"value2"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过key获取值</span></span><br><span class="line">String value1 = (String) redisTemplate.opsForValue().get(<span class="string">"key1"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过key删除值</span></span><br><span class="line">redisTemplate.delete(<span class="string">"key1"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//求长度</span></span><br><span class="line">Long length = redisTemplate.opsForValue().size(<span class="string">"key2"</span>);</span><br><span class="line">System.out.println(length);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设新值返回旧值</span></span><br><span class="line">String oldValue2 = (String) redisTemplate.opsForValue().getAndSet(<span class="string">"key2"</span>,<span class="string">"new_value2"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过key获取值</span></span><br><span class="line">String value2 = (String) redisTemplate.opsForValue().get(<span class="string">"key2"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//求子串</span></span><br><span class="line">String rangeValue2 = redisTemplate.opsForValue().get(<span class="string">"key2"</span>, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">System.out.println(rangeValue2);</span><br><span class="line"></span><br><span class="line"><span class="comment">//追加字符串到末尾，返回新串长度</span></span><br><span class="line"><span class="keyword">int</span>  newLen = redisTemplate.opsForValue().append(<span class="string">"key2"</span>, <span class="string">"_append"</span>);</span><br><span class="line">String appendValue2 = (String) redisTemplate.opsForValue().get(<span class="string">"key2"</span>);</span><br><span class="line">System.out.println(appendValue2);</span><br></pre></td></tr></table></figure></p>
+<p>字符串是数字，支持简单运算</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>incr key</td>
+<td>原字段值+1</td>
+<td>整数操作</td>
+</tr>
+<tr>
+<td>incrby key increment</td>
+<td>原字段值+指定整数</td>
+<td>-</td>
+</tr>
+<tr>
+<td>decr key</td>
+<td>原字段-1</td>
+<td>-</td>
+</tr>
+<tr>
+<td>decrby key decrement</td>
+<td>原字段值-指定整数</td>
+<td>-</td>
+</tr>
+<tr>
+<td>incrbyfloat key increment</td>
+<td>源字段值+指定浮点数</td>
+<td>浮点数或整数操作</td>
+</tr>
+</tbody>
+</table>
+<p>SpringApi：</p>
+<ul>
+<li>对于减法，spring没有很好的支持，采用获得连接工厂，使用底层命令操作对象。</li>
+<li>所有关于减法的方法，原有值都必须是整数，否则就会引发异常。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testStringOps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    redisTemplate.opsForValue().set(<span class="string">"i"</span>, <span class="string">"9"</span>);</span><br><span class="line">    printCurrValue(redisTemplate, <span class="string">"i"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加1</span></span><br><span class="line">    redisTemplate.opsForValue().increment(<span class="string">"i"</span>, <span class="number">1</span>);</span><br><span class="line">    printCurrValue(redisTemplate, <span class="string">"i"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//默认减1</span></span><br><span class="line">    redisTemplate.getConnectionFactory().getConnection().decr(</span><br><span class="line">            redisTemplate.getKeySerializer().serialize(<span class="string">"i"</span>)</span><br><span class="line">    );</span><br><span class="line">    printCurrValue(redisTemplate,<span class="string">"i"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//减6</span></span><br><span class="line">    redisTemplate.getConnectionFactory().getConnection().decrBy(</span><br><span class="line">            redisTemplate.getKeySerializer().serialize(<span class="string">"i"</span>), <span class="number">6</span>);</span><br><span class="line">    printCurrValue(redisTemplate, <span class="string">"i"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加浮点</span></span><br><span class="line">    redisTemplate.opsForValue().increment(<span class="string">"i"</span>, <span class="number">2.3</span>);</span><br><span class="line">    printCurrValue(redisTemplate, <span class="string">"i"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术/" rel="tag"><i class="fa fa-tag"></i>
+ 技术</a>
+          
+            <a href="/tags/框架/" rel="tag"><i class="fa fa-tag"></i>
+ 框架</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i>
+ 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/04/2019-3-4-springmvc复习总结/" rel="next" title="springmvc复习">
+                <i class="fa fa-chevron-left"></i> springmvc复习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.gif"
+                alt="Dasorb" />
+            
+              <p class="site-author-name" itemprop="name">Dasorb</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis缓存框架学习总结"><span class="nav-number">1.</span> <span class="nav-text">Redis缓存框架学习总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Redis概述"><span class="nav-number">1.1.</span> <span class="nav-text">1. Redis概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Reids的基本安装和使用"><span class="nav-number">1.2.</span> <span class="nav-text">2. Reids的基本安装和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA-API："><span class="nav-number">1.2.1.</span> <span class="nav-text">JAVA API：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-API"><span class="nav-number">1.2.2.</span> <span class="nav-text">Spring API:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Redis数据结构常用命令"><span class="nav-number">1.3.</span> <span class="nav-text">3. Redis数据结构常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">1.3.2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希"><span class="nav-number">1.3.3.</span> <span class="nav-text">哈希</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dasorb</span>
+
+  
+</div>
+
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+  <div class="theme-info">主题  <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共19.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
